@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component type="Form" name="Register" cloudDestinationProperty="Register" layout="BoxLayout" boxLayoutAxis="Y" >
+  <component type="Button" name="ProfilePic" cloudDestinationProperty="profilePic" uiid="profilePic" text="" icon="profile.png" >
+  </component>
+  <component type="TextArea" name="Username" cloudBoundProperty="text" cloudDestinationProperty="username" text="" hint="Username" >
+  </component>
+  <component type="TextArea" name="Email" cloudBoundProperty="text" cloudDestinationProperty="email" text="" hint="Email" >
+  </component>
+  <component type="TextArea" name="Password" cloudBoundProperty="text" cloudDestinationProperty="password" text="" hint="Password" >
+  </component>
+  <component type="TextArea" name="CPassword" cloudBoundProperty="text" cloudDestinationProperty="cpassword" text="" hint="Confirm Password" >
+  </component>
+  <component type="TextArea" name="Phone" cloudBoundProperty="text" cloudDestinationProperty="phone" text="" hint="Phone" >
+  </component>
+  <component type="Button" name="Register" cloudDestinationProperty="Button" text="Register" >
+  </component>
+  <component type="Label" name="labelLogin" cloudDestinationProperty="Label" uiid="labelCenter" text="Already a member?, Login!" >
+  </component>
+</component>

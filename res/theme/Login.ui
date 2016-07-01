@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component type="Form" name="Login" cloudDestinationProperty="Login" layout="BorderLayout" borderLayoutAbsoluteCenter="false" >
+  <component type="Button" name="Logo" cloudDestinationProperty="Logo" uiid="Logo" text="" icon="logo.png" >
+    <layoutConstraint value="North" />
+  </component>
+  <component type="Container" name="Container" cloudDestinationProperty="Container" layout="BoxLayout" boxLayoutAxis="Y" >
+    <layoutConstraint value="Center" />
+    <component type="TextArea" name="username" cloudBoundProperty="text" cloudDestinationProperty="TextArea" text="" hint="Username" >
+    </component>
+    <component type="TextArea" name="password" cloudBoundProperty="text" cloudDestinationProperty="TextArea1" text="" hint="Password" >
+    </component>
+    <component type="Button" name="btnLogin" cloudDestinationProperty="Button" text="Login" >
+    </component>
+    <component type="Label" name="labelRegister" cloudDestinationProperty="labelRegister" uiid="labelCenter" text="Don't have an account?, Register Now!" verticalAlignment="4" textPosition="2" >
+    </component>
+  </component>
+</component>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component type="Form" name="MainScreen" cloudDestinationProperty="MainScreen" layout="BorderLayout" borderLayoutAbsoluteCenter="false" >
+  <component type="MapComponent" name="MapComponent" cloudDestinationProperty="MapComponent" >
+    <layoutConstraint value="Center" />
+  </component>
+</component>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<resource majorVersion="1" minorVersion="7" useXmlUI="false">
+    <l10n name="L">
+        <lang name="ar">
+            <entry key="Button" value="Button" />
+            <entry key="@rtl" value="true" />
+        </lang>
+        <lang name="en">
+            <entry key="select" value="Select" />
+            <entry key="Button" value="Button" />
+            <entry key="@rtl" value="" />
+            <entry key="ok" value="OK" />
+            <entry key="edit" value="Edit" />
+            <entry key="cancel" value="Cancel" />
+            <entry key="menu" value="Menu" />
+        </lang>
+    </l10n>
+    <ui name="Login" />
+    <image name="logo.png" type="multi"  />
+    <ui name="MainScreen" />
+    <image name="profile.png" type="multi"  />
+    <image name="profilePic.borderBottom_1.png" type="multi"  />
+    <image name="profilePic.borderBottom_2.png" type="multi"  />
+    <image name="profilePic.borderBottom_3.png" type="multi"  />
+    <image name="profilePic.borderBottom_4.png" type="multi"  />
+    <image name="profilePic.borderBottom_5.png" type="multi"  />
+    <image name="profilePic.borderBottom_6.png" type="multi"  />
+    <image name="profilePic.borderBottom_7.png" type="multi"  />
+    <image name="profilePic.borderBottomL_1.png" type="multi"  />
+    <image name="profilePic.borderBottomL_2.png" type="multi"  />
+    <image name="profilePic.borderBottomL_3.png" type="multi"  />
+    <image name="profilePic.borderBottomL_4.png" type="multi"  />
+    <image name="profilePic.borderBottomL_5.png" type="multi"  />
+    <image name="profilePic.borderBottomL_6.png" type="multi"  />
+    <image name="profilePic.borderBottomL_7.png" type="multi"  />
+    <image name="profilePic.borderBottomR_1.png" type="multi"  />
+    <image name="profilePic.borderBottomR_2.png" type="multi"  />
+    <image name="profilePic.borderBottomR_3.png" type="multi"  />
+    <image name="profilePic.borderBottomR_4.png" type="multi"  />
+    <image name="profilePic.borderBottomR_5.png" type="multi"  />
+    <image name="profilePic.borderBottomR_6.png" type="multi"  />
+    <image name="profilePic.borderBottomR_7.png" type="multi"  />
+    <image name="profilePic.borderCenter_1.png" type="multi"  />
+    <image name="profilePic.borderCenter_2.png" type="multi"  />
+    <image name="profilePic.borderCenter_3.png" type="multi"  />
+    <image name="profilePic.borderCenter_4.png" type="multi"  />
+    <image name="profilePic.borderCenter_5.png" type="multi"  />
+    <image name="profilePic.borderCenter_6.png" type="multi"  />
+    <image name="profilePic.borderCenter_7.png" type="multi"  />
+    <image name="profilePic.borderLeft_1.png" type="multi"  />
+    <image name="profilePic.borderLeft_2.png" type="multi"  />
+    <image name="profilePic.borderLeft_3.png" type="multi"  />
+    <image name="profilePic.borderLeft_4.png" type="multi"  />
+    <image name="profilePic.borderLeft_5.png" type="multi"  />
+    <image name="profilePic.borderLeft_6.png" type="multi"  />
+    <image name="profilePic.borderLeft_7.png" type="multi"  />
+    <image name="profilePic.borderRight_1.png" type="multi"  />
+    <image name="profilePic.borderRight_2.png" type="multi"  />
+    <image name="profilePic.borderRight_3.png" type="multi"  />
+    <image name="profilePic.borderRight_4.png" type="multi"  />
+    <image name="profilePic.borderRight_5.png" type="multi"  />
+    <image name="profilePic.borderRight_6.png" type="multi"  />
+    <image name="profilePic.borderRight_7.png" type="multi"  />
+    <image name="profilePic.borderTop_1.png" type="multi"  />
+    <image name="profilePic.borderTop_2.png" type="multi"  />
+    <image name="profilePic.borderTop_3.png" type="multi"  />
+    <image name="profilePic.borderTop_4.png" type="multi"  />
+    <image name="profilePic.borderTop_5.png" type="multi"  />
+    <image name="profilePic.borderTop_6.png" type="multi"  />
+    <image name="profilePic.borderTop_7.png" type="multi"  />
+    <image name="profilePic.borderTopL_1.png" type="multi"  />
+    <image name="profilePic.borderTopL_2.png" type="multi"  />
+    <image name="profilePic.borderTopL_3.png" type="multi"  />
+    <image name="profilePic.borderTopL_4.png" type="multi"  />
+    <image name="profilePic.borderTopL_5.png" type="multi"  />
+    <image name="profilePic.borderTopL_6.png" type="multi"  />
+    <image name="profilePic.borderTopL_7.png" type="multi"  />
+    <image name="profilePic.borderTopR_1.png" type="multi"  />
+    <image name="profilePic.borderTopR_2.png" type="multi"  />
+    <image name="profilePic.borderTopR_3.png" type="multi"  />
+    <image name="profilePic.borderTopR_4.png" type="multi"  />
+    <image name="profilePic.borderTopR_5.png" type="multi"  />
+    <image name="profilePic.borderTopR_6.png" type="multi"  />
+    <image name="profilePic.borderTopR_7.png" type="multi"  />
+    <ui name="Register" />
+    <theme name="Theme">
+        <val key="@includeNativeBool" value="true" />
+        <val key="Logo.align" value="4" />
+        <val key="Logo.marUnit" value="2,0,2,0" />
+        <val key="Logo.margin" value="5,5,0,0" />
+        <val key="Logo.transparency" value="0" />
+        <val key="labelCenter.align" value="4" />
+        <val key="profilePic.align" value="4" />
+        <val key="profilePic.marUnit" value="2,0,2,0" />
+        <val key="profilePic.margin" value="5,5,0,0" />
+    </theme>
+</resource>
