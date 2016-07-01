@@ -11,8 +11,8 @@
             <entry key="Button" value="Button" />
             <entry key="@rtl" value="" />
             <entry key="ok" value="OK" />
-            <entry key="edit" value="Edit" />
             <entry key="cancel" value="Cancel" />
+            <entry key="edit" value="Edit" />
             <entry key="menu" value="Menu" />
         </lang>
     </l10n>
