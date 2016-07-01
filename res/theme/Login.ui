@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<component type="Form" name="Login" cloudDestinationProperty="Login" layout="BorderLayout" borderLayoutAbsoluteCenter="false" >
+<component type="Form" name="Login" cloudDestinationProperty="Login" layout="BorderLayout" borderLayoutAbsoluteCenter="false" title="Login" >
   <component type="Button" name="Logo" cloudDestinationProperty="Logo" uiid="Logo" text="" icon="logo.png" >
     <layoutConstraint value="North" />
   </component>
   <component type="Container" name="Container" cloudDestinationProperty="Container" layout="BoxLayout" boxLayoutAxis="Y" >
     <layoutConstraint value="Center" />
-    <component type="TextArea" name="username" cloudBoundProperty="text" cloudDestinationProperty="TextArea" text="" hint="Username" >
+    <component type="TextArea" name="Username" cloudBoundProperty="text" cloudDestinationProperty="TextArea" text="" hint="Username" >
     </component>
-    <component type="TextArea" name="password" cloudBoundProperty="text" cloudDestinationProperty="TextArea1" text="" hint="Password" >
+    <component type="TextArea" name="Password" cloudBoundProperty="text" cloudDestinationProperty="TextArea1" text="" hint="Password" >
     </component>
-    <component type="Button" name="btnLogin" cloudDestinationProperty="Button" text="Login" >
+    <component type="Button" name="BtnLogin" cloudDestinationProperty="Button" commandName="Login" commandId="5" commandAction="MainScreen" commandBack="false" text="Login" >
     </component>
-    <component type="Label" name="labelRegister" cloudDestinationProperty="labelRegister" uiid="labelCenter" text="Don't have an account?, Register Now!" verticalAlignment="4" textPosition="2" >
+    <component type="Button" name="BtnNoAccount" cloudDestinationProperty="BtnNoAccount" commandName="Don't have an account?, Register Now!" commandId="4" commandAction="Register" commandBack="false" uiid="labelCenter" text="Don't have an account?, Register Now!" >
     </component>
   </component>
 </component>

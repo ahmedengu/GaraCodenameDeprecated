@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<component type="Form" name="MainScreen" cloudDestinationProperty="MainScreen" layout="BorderLayout" borderLayoutAbsoluteCenter="false" >
+<component type="Form" name="MainScreen" cloudDestinationProperty="MainScreen" layout="BorderLayout" borderLayoutAbsoluteCenter="false" title="Home" >
   <component type="MapComponent" name="MapComponent" cloudDestinationProperty="MapComponent" >
     <layoutConstraint value="Center" />
   </component>
-</component>
+<command name="Logout" id="12" action="" backCommand="false" /><command name="Chat" id="11" action="" backCommand="false" /><command name="Settings" id="10" action="" backCommand="false" /><command name="Profile" id="9" action="" backCommand="false" /><command name="Driver area" id="8" action="" backCommand="false" /><command name="Become a driver" id="7" action="" backCommand="false" /><command name="Home" id="6" action="" backCommand="false" /></component>

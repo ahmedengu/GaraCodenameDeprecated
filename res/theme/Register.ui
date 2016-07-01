@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<component type="Form" name="Register" cloudDestinationProperty="Register" layout="BoxLayout" boxLayoutAxis="Y" >
+<component type="Form" name="Register" cloudDestinationProperty="Register" layout="BoxLayout" boxLayoutAxis="Y" title="Register" >
   <component type="Button" name="ProfilePic" cloudDestinationProperty="profilePic" uiid="profilePic" text="" icon="profile.png" >
   </component>
   <component type="TextArea" name="Username" cloudBoundProperty="text" cloudDestinationProperty="username" text="" hint="Username" >
@@ -13,8 +13,8 @@
   </component>
   <component type="TextArea" name="Phone" cloudBoundProperty="text" cloudDestinationProperty="phone" text="" hint="Phone" >
   </component>
-  <component type="Button" name="Register" cloudDestinationProperty="Button" text="Register" >
+  <component type="Button" name="Register" cloudDestinationProperty="Button" commandName="Register" commandId="1" commandAction="MainScreen" commandBack="false" text="Register" >
   </component>
-  <component type="Label" name="labelLogin" cloudDestinationProperty="Label" uiid="labelCenter" text="Already a member?, Login!" >
+  <component type="Button" name="BtnHaveAccount" cloudDestinationProperty="BtnHaveAccount" commandName="Already a member?, Login!" commandId="2" commandAction="Login" commandBack="false" uiid="labelCenter" text="Already a member?, Login!" >
   </component>
 </component>

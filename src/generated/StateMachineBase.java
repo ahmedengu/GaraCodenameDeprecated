@@ -37,7 +37,6 @@ public abstract class StateMachineBase extends UIBuilder {
         UIBuilder.registerCustomComponent("Form", com.codename1.ui.Form.class);
         UIBuilder.registerCustomComponent("Button", com.codename1.ui.Button.class);
         UIBuilder.registerCustomComponent("TextArea", com.codename1.ui.TextArea.class);
-        UIBuilder.registerCustomComponent("Label", com.codename1.ui.Label.class);
         UIBuilder.registerCustomComponent("MapComponent", com.codename1.maps.MapComponent.class);
         if(loadTheme) {
             if(res == null) {
@@ -77,7 +76,6 @@ public abstract class StateMachineBase extends UIBuilder {
         UIBuilder.registerCustomComponent("Form", com.codename1.ui.Form.class);
         UIBuilder.registerCustomComponent("Button", com.codename1.ui.Button.class);
         UIBuilder.registerCustomComponent("TextArea", com.codename1.ui.TextArea.class);
-        UIBuilder.registerCustomComponent("Label", com.codename1.ui.Label.class);
         UIBuilder.registerCustomComponent("MapComponent", com.codename1.maps.MapComponent.class);
         if(loadTheme) {
             if(res == null) {
@@ -128,18 +126,6 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
-    public com.codename1.ui.Label findLabelRegister(Component root) {
-        return (com.codename1.ui.Label)findByName("labelRegister", root);
-    }
-
-    public com.codename1.ui.Label findLabelRegister() {
-        com.codename1.ui.Label cmp = (com.codename1.ui.Label)findByName("labelRegister", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.Label)findByName("labelRegister", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
     public com.codename1.ui.Button findLogo(Component root) {
         return (com.codename1.ui.Button)findByName("Logo", root);
     }
@@ -148,18 +134,6 @@ public abstract class StateMachineBase extends UIBuilder {
         com.codename1.ui.Button cmp = (com.codename1.ui.Button)findByName("Logo", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
             cmp = (com.codename1.ui.Button)findByName("Logo", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
-    public com.codename1.ui.TextArea findPassword(Component root) {
-        return (com.codename1.ui.TextArea)findByName("password", root);
-    }
-
-    public com.codename1.ui.TextArea findPassword() {
-        com.codename1.ui.TextArea cmp = (com.codename1.ui.TextArea)findByName("password", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.TextArea)findByName("password", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -176,18 +150,6 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
-    public com.codename1.ui.Button findBtnLogin(Component root) {
-        return (com.codename1.ui.Button)findByName("btnLogin", root);
-    }
-
-    public com.codename1.ui.Button findBtnLogin() {
-        com.codename1.ui.Button cmp = (com.codename1.ui.Button)findByName("btnLogin", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.Button)findByName("btnLogin", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
     public com.codename1.ui.TextArea findCPassword(Component root) {
         return (com.codename1.ui.TextArea)findByName("CPassword", root);
     }
@@ -200,6 +162,42 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
+    public com.codename1.ui.Button findBtnNoAccount(Component root) {
+        return (com.codename1.ui.Button)findByName("BtnNoAccount", root);
+    }
+
+    public com.codename1.ui.Button findBtnNoAccount() {
+        com.codename1.ui.Button cmp = (com.codename1.ui.Button)findByName("BtnNoAccount", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.Button)findByName("BtnNoAccount", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.TextArea findUsername(Component root) {
+        return (com.codename1.ui.TextArea)findByName("Username", root);
+    }
+
+    public com.codename1.ui.TextArea findUsername() {
+        com.codename1.ui.TextArea cmp = (com.codename1.ui.TextArea)findByName("Username", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.TextArea)findByName("Username", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.Button findBtnLogin(Component root) {
+        return (com.codename1.ui.Button)findByName("BtnLogin", root);
+    }
+
+    public com.codename1.ui.Button findBtnLogin() {
+        com.codename1.ui.Button cmp = (com.codename1.ui.Button)findByName("BtnLogin", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.Button)findByName("BtnLogin", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
     public com.codename1.ui.Component findRegister(Component root) {
         return (com.codename1.ui.Component)findByName("Register", root);
     }
@@ -208,18 +206,6 @@ public abstract class StateMachineBase extends UIBuilder {
         com.codename1.ui.Component cmp = (com.codename1.ui.Component)findByName("Register", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
             cmp = (com.codename1.ui.Component)findByName("Register", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
-    public com.codename1.ui.Label findLabelLogin(Component root) {
-        return (com.codename1.ui.Label)findByName("labelLogin", root);
-    }
-
-    public com.codename1.ui.Label findLabelLogin() {
-        com.codename1.ui.Label cmp = (com.codename1.ui.Label)findByName("labelLogin", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.Label)findByName("labelLogin", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -260,16 +246,169 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
-    public com.codename1.ui.TextArea findUsername(Component root) {
-        return (com.codename1.ui.TextArea)findByName("username", root);
+    public com.codename1.ui.TextArea findPassword(Component root) {
+        return (com.codename1.ui.TextArea)findByName("Password", root);
     }
 
-    public com.codename1.ui.TextArea findUsername() {
-        com.codename1.ui.TextArea cmp = (com.codename1.ui.TextArea)findByName("username", Display.getInstance().getCurrent());
+    public com.codename1.ui.TextArea findPassword() {
+        com.codename1.ui.TextArea cmp = (com.codename1.ui.TextArea)findByName("Password", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.TextArea)findByName("username", aboutToShowThisContainer);
+            cmp = (com.codename1.ui.TextArea)findByName("Password", aboutToShowThisContainer);
         }
         return cmp;
+    }
+
+    public com.codename1.ui.Button findBtnHaveAccount(Component root) {
+        return (com.codename1.ui.Button)findByName("BtnHaveAccount", root);
+    }
+
+    public com.codename1.ui.Button findBtnHaveAccount() {
+        com.codename1.ui.Button cmp = (com.codename1.ui.Button)findByName("BtnHaveAccount", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.Button)findByName("BtnHaveAccount", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public static final int COMMAND_LoginDonTHaveAnAccountRegisterNow = 4;
+    public static final int COMMAND_MainScreenDriverArea = 8;
+    public static final int COMMAND_MainScreenBecomeADriver = 7;
+    public static final int COMMAND_RegisterAlreadyAMemberLogin = 2;
+    public static final int COMMAND_LoginLogin = 5;
+    public static final int COMMAND_MainScreenLogout = 12;
+    public static final int COMMAND_MainScreenSettings = 10;
+    public static final int COMMAND_MainScreenChat = 11;
+    public static final int COMMAND_MainScreenProfile = 9;
+    public static final int COMMAND_MainScreenHome = 6;
+    public static final int COMMAND_RegisterRegister = 1;
+
+    protected boolean onLoginDonTHaveAnAccountRegisterNow() {
+        return false;
+    }
+
+    protected boolean onMainScreenDriverArea() {
+        return false;
+    }
+
+    protected boolean onMainScreenBecomeADriver() {
+        return false;
+    }
+
+    protected boolean onRegisterAlreadyAMemberLogin() {
+        return false;
+    }
+
+    protected boolean onLoginLogin() {
+        return false;
+    }
+
+    protected boolean onMainScreenLogout() {
+        return false;
+    }
+
+    protected boolean onMainScreenSettings() {
+        return false;
+    }
+
+    protected boolean onMainScreenChat() {
+        return false;
+    }
+
+    protected boolean onMainScreenProfile() {
+        return false;
+    }
+
+    protected boolean onMainScreenHome() {
+        return false;
+    }
+
+    protected boolean onRegisterRegister() {
+        return false;
+    }
+
+    protected void processCommand(ActionEvent ev, Command cmd) {
+        switch(cmd.getId()) {
+            case COMMAND_LoginDonTHaveAnAccountRegisterNow:
+                if(onLoginDonTHaveAnAccountRegisterNow()) {
+                    ev.consume();
+                    return;
+                }
+                break;
+
+            case COMMAND_MainScreenDriverArea:
+                if(onMainScreenDriverArea()) {
+                    ev.consume();
+                    return;
+                }
+                break;
+
+            case COMMAND_MainScreenBecomeADriver:
+                if(onMainScreenBecomeADriver()) {
+                    ev.consume();
+                    return;
+                }
+                break;
+
+            case COMMAND_RegisterAlreadyAMemberLogin:
+                if(onRegisterAlreadyAMemberLogin()) {
+                    ev.consume();
+                    return;
+                }
+                break;
+
+            case COMMAND_LoginLogin:
+                if(onLoginLogin()) {
+                    ev.consume();
+                    return;
+                }
+                break;
+
+            case COMMAND_MainScreenLogout:
+                if(onMainScreenLogout()) {
+                    ev.consume();
+                    return;
+                }
+                break;
+
+            case COMMAND_MainScreenSettings:
+                if(onMainScreenSettings()) {
+                    ev.consume();
+                    return;
+                }
+                break;
+
+            case COMMAND_MainScreenChat:
+                if(onMainScreenChat()) {
+                    ev.consume();
+                    return;
+                }
+                break;
+
+            case COMMAND_MainScreenProfile:
+                if(onMainScreenProfile()) {
+                    ev.consume();
+                    return;
+                }
+                break;
+
+            case COMMAND_MainScreenHome:
+                if(onMainScreenHome()) {
+                    ev.consume();
+                    return;
+                }
+                break;
+
+            case COMMAND_RegisterRegister:
+                if(onRegisterRegister()) {
+                    ev.consume();
+                    return;
+                }
+                break;
+
+        }
+        if(ev.getComponent() != null) {
+            handleComponentAction(ev.getComponent(), ev);
+        }
     }
 
     protected void exitForm(Form f) {
@@ -562,16 +701,20 @@ public abstract class StateMachineBase extends UIBuilder {
                 onLogin_LogoAction(c, event);
                 return;
             }
-            if("username".equals(c.getName())) {
+            if("Username".equals(c.getName())) {
                 onLogin_UsernameAction(c, event);
                 return;
             }
-            if("password".equals(c.getName())) {
+            if("Password".equals(c.getName())) {
                 onLogin_PasswordAction(c, event);
                 return;
             }
-            if("btnLogin".equals(c.getName())) {
+            if("BtnLogin".equals(c.getName())) {
                 onLogin_BtnLoginAction(c, event);
+                return;
+            }
+            if("BtnNoAccount".equals(c.getName())) {
+                onLogin_BtnNoAccountAction(c, event);
                 return;
             }
         }
@@ -604,6 +747,10 @@ public abstract class StateMachineBase extends UIBuilder {
                 onRegister_RegisterAction(c, event);
                 return;
             }
+            if("BtnHaveAccount".equals(c.getName())) {
+                onRegister_BtnHaveAccountAction(c, event);
+                return;
+            }
         }
     }
 
@@ -617,6 +764,9 @@ public abstract class StateMachineBase extends UIBuilder {
       }
 
       protected void onLogin_BtnLoginAction(Component c, ActionEvent event) {
+      }
+
+      protected void onLogin_BtnNoAccountAction(Component c, ActionEvent event) {
       }
 
       protected void onRegister_ProfilePicAction(Component c, ActionEvent event) {
@@ -638,6 +788,9 @@ public abstract class StateMachineBase extends UIBuilder {
       }
 
       protected void onRegister_RegisterAction(Component c, ActionEvent event) {
+      }
+
+      protected void onRegister_BtnHaveAccountAction(Component c, ActionEvent event) {
       }
 
 }

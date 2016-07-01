@@ -30,4 +30,15 @@ public class StateMachine extends StateMachineBase {
     protected void initVars(Resources res) {
     }
 
+
+    @Override
+    protected void onCreateMainScreen() {
+    
+    }
+
+    @Override
+    protected void onLogin_BtnLoginAction(Component c, ActionEvent event) {
+
+    
+    }
 }

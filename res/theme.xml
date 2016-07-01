@@ -86,6 +86,7 @@
     <ui name="Register" />
     <theme name="Theme">
         <val key="@includeNativeBool" value="true" />
+        <val key="@mapZoomButtonsBool" value="false" />
         <val key="Logo.align" value="4" />
         <val key="Logo.marUnit" value="2,0,2,0" />
         <val key="Logo.margin" value="5,5,0,0" />
