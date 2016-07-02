@@ -12,10 +12,13 @@ import com.codename1.location.LocationManager;
 import com.codename1.maps.Coord;
 import com.codename1.maps.MapComponent;
 import com.codename1.maps.layers.PointLayer;
-import generated.StateMachineBase;
-import com.codename1.ui.*;
-import com.codename1.ui.events.*;
+import com.codename1.maps.layers.PointsLayer;
+import com.codename1.ui.Component;
+import com.codename1.ui.Form;
+import com.codename1.ui.Image;
+import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.util.Resources;
+import generated.StateMachineBase;
 
 import java.io.IOException;
 
@@ -23,6 +26,9 @@ import java.io.IOException;
  * @author Your name here
  */
 public class StateMachine extends StateMachineBase {
+    PointLayer distPoint;
+    PointsLayer distLayer;
+
     public StateMachine(String resFile) {
         super(resFile);
         // do not modify, write code in initVars and initialize class members there,
@@ -52,18 +58,100 @@ public class StateMachine extends StateMachineBase {
     protected void beforeMainScreen(Form f) {
         try {
             Location lastKnownLocation = LocationManager.getLocationManager().getCurrentLocation();
-            final MapComponent mapComponent = new MapComponent();
-
-             Image image = fetchResourceFile().getImage("/logo.png");
-             String name = "i'm here";
-             Coord position = new Coord(lastKnownLocation.getLatitude(), lastKnownLocation.getLongitude());
+            Image image = fetchResourceFile().getImage("map-pin-blue-hi.png");
+            String name = "You are here!";
+            Coord position = new Coord(lastKnownLocation.getLatitude(), lastKnownLocation.getLongitude());
             PointLayer pointLayer = new PointLayer(position, name, image);
             pointLayer.setDisplayName(true);
 
-            mapComponent.addLayer(pointLayer);
-            f.addComponent(mapComponent);
+            PointsLayer pointsLayer = new PointsLayer();
+            pointsLayer.addPoint(pointLayer);
+
+            findMapComponent().addLayer(pointsLayer);
+
+
+//            findMapComponent().addMapListener((source, zoom, center) -> {
+//
+//                PointsLayer pointsLayer1 = new PointsLayer();
+//                Image image1 = fetchResourceFile().getImage("map-pin-green-hi.png");
+//                String name1 = "Your Dist!";
+//                Coord coord = new Coord(center.getLatitude(), center.getLongitude());
+//                PointLayer pointLayer1 = new PointLayer(coord, name1, image1);
+//                pointLayer1.setDisplayName(true);
+////                pointLayer1.setProjected(true);
+////
+////                pointsLayer1.addPoint(pointLayer1);
+////                MapComponent mapComponent = findMapComponent();
+////                PointsLayer layerAt = (PointsLayer) mapComponent.getLayerAt(0);
+////                layerAt.addPoint(pointLayer1);
+//////                mapComponent.addLayer(pointsLayer1);
+////                mapComponent.removeAllLayers();
+////                mapComponent.addLayer(layerAt);
+////                mapComponent.repaint();
+////                f.repaint();
+//////                f.refreshTheme();
+//////                f.revalidate();
+//
+//
+//                MapComponent mapComponent = findMapComponent();
+//                PointsLayer layerAt = (PointsLayer) mapComponent.getLayerAt(0);
+//                layerAt.addPoint(pointLayer1);
+//                f.removeAll();
+//                f.addComponent(mapComponent);
+////                mapComponent.repaint();
+////                f.repaint();
+//
+//            });
+
+//            findMapComponent().addMapListener(new MapListener() {
+//                @Override
+//                public void mapPositionUpdated(Component source, int zoom, Coord center) {
+//                Image image1 = fetchResourceFile().getImage("map-pin-green-hi.png");
+//                String name1 = "Your Dist!";
+//                Coord coord = new Coord(center.getLatitude(), center.getLongitude());
+//                    Coord coordFromPosition = findMapComponent().getCoordFromPosition(source.getX(), source.getY());
+//                    Coord coordFromPosition1 = findMapComponent().getCoordFromPosition(source.getAbsoluteX(), source.getAbsoluteY());
+//
+//                    System.out.println(source);
+//                    PointLayer pointLayer1 = new PointLayer(coord,name1,image1);
+//                    PointsLayer pointsLayer1 = new PointsLayer();
+//                    pointsLayer1.addPoint(pointLayer1);
+//                    findMapComponent().addLayer(pointsLayer1);
+//                }
+//
+//            });
+
+
+            findMapComponent().addPointerReleasedListener(evt -> {
+
+                MapComponent source = (MapComponent) evt.getSource();
+                final boolean longTap = source.isLongTap();
+
+                if (longTap) {
+                    Image image1 = fetchResourceFile().getImage("map-pin-green-hi.png");
+                    String name1 = "Your Dist!";
+                    Coord coord = findMapComponent().getCoordFromPosition(evt.getX(), evt.getY());
+
+                    distPoint = new PointLayer(coord, name1, image1);
+                    distPoint.setDisplayName(true);
+                    distLayer = new PointsLayer();
+                    distLayer.addPoint(distPoint);
+
+                    while (findMapComponent().getLayersConut()>1)
+                    findMapComponent().removeLayer(findMapComponent().getLayerAt(1));
+
+                    findMapComponent().addLayer(distLayer);
+                    findMapComponent().revalidate();
+                    findMapComponent().repaint();
+                    f.revalidate();
+
+                    f.repaint();
+                }
+            });
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+
 }

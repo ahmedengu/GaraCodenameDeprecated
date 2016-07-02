@@ -8,10 +8,19 @@
 package generated;
 
 import com.codename1.ui.*;
+import com.codename1.ui.Command;
+import com.codename1.ui.Component;
+import com.codename1.ui.Container;
+import com.codename1.ui.Display;
+import com.codename1.ui.Form;
+import com.codename1.ui.events.ActionEvent;
+import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.*;
 import com.codename1.ui.plaf.*;
 import java.util.Hashtable;
 import com.codename1.ui.events.*;
+import com.codename1.ui.util.Resources;
+import com.codename1.ui.util.UIBuilder;
 
 public abstract class StateMachineBase extends UIBuilder {
     private Container aboutToShowThisContainer;
@@ -37,6 +46,7 @@ public abstract class StateMachineBase extends UIBuilder {
         UIBuilder.registerCustomComponent("Form", com.codename1.ui.Form.class);
         UIBuilder.registerCustomComponent("Button", com.codename1.ui.Button.class);
         UIBuilder.registerCustomComponent("TextArea", com.codename1.ui.TextArea.class);
+        UIBuilder.registerCustomComponent("MapComponent", com.codename1.maps.MapComponent.class);
         if(loadTheme) {
             if(res == null) {
                 try {
@@ -75,6 +85,7 @@ public abstract class StateMachineBase extends UIBuilder {
         UIBuilder.registerCustomComponent("Form", com.codename1.ui.Form.class);
         UIBuilder.registerCustomComponent("Button", com.codename1.ui.Button.class);
         UIBuilder.registerCustomComponent("TextArea", com.codename1.ui.TextArea.class);
+        UIBuilder.registerCustomComponent("MapComponent", com.codename1.maps.MapComponent.class);
         if(loadTheme) {
             if(res == null) {
                 try {
@@ -216,6 +227,18 @@ public abstract class StateMachineBase extends UIBuilder {
         com.codename1.ui.TextArea cmp = (com.codename1.ui.TextArea)findByName("Phone", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
             cmp = (com.codename1.ui.TextArea)findByName("Phone", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.maps.MapComponent findMapComponent(Component root) {
+        return (com.codename1.maps.MapComponent)findByName("MapComponent", root);
+    }
+
+    public com.codename1.maps.MapComponent findMapComponent() {
+        com.codename1.maps.MapComponent cmp = (com.codename1.maps.MapComponent)findByName("MapComponent", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.maps.MapComponent)findByName("MapComponent", aboutToShowThisContainer);
         }
         return cmp;
     }
