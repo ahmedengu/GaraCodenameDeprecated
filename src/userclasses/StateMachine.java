@@ -7,6 +7,7 @@
 
 package userclasses;
 
+import com.codename1.components.ToastBar;
 import com.codename1.location.Location;
 import com.codename1.location.LocationManager;
 import com.codename1.maps.Coord;
@@ -127,14 +128,19 @@ public class StateMachine extends StateMachineBase {
                 pointerPressed = System.currentTimeMillis();
                 pointerPressedX = evt.getX();
                 pointerPressedY = evt.getY();
+                ToastBar.showErrorMessage("hello werld");
             }
             );
             findMapComponent().addPointerReleasedListener(evt -> {
                 int x = evt.getX();
                 int y = evt.getY();
 
-                final boolean longTap = (System.currentTimeMillis()-pointerPressed>=150)&&x==pointerPressedX&&y==pointerPressedY;
+                final boolean longTap = (System.currentTimeMillis()-pointerPressed>=200)&&Math.abs(x-pointerPressedX)<=10&& Math.abs(y-pointerPressedY)<=10;
+                ToastBar.showErrorMessage("longTap:"+longTap+" time:"+ (System.currentTimeMillis()-pointerPressed) + " px:"+pointerPressedX+" x:"+x+" py:"+pointerPressedY+" y:"+y);
+
                 if (longTap) {
+//                    ToastBar.showErrorMessage("byebye");
+
                     Image image1 = fetchResourceFile().getImage("map-pin-green-hi.png");
                     String name1 = "Your Dist!";
                     Coord coord = findMapComponent().getCoordFromPosition(evt.getX(), evt.getY());

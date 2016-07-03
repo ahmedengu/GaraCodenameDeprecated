@@ -3,6 +3,7 @@
 <resource majorVersion="1" minorVersion="7" useXmlUI="false">
     <ui name="GUI 1" />
     <ui name="GUI 2" />
+    <ui name="GUI 3" />
     <l10n name="L">
         <lang name="ar">
             <entry key="Button" value="Button" />
@@ -13,8 +14,8 @@
             <entry key="Button" value="Button" />
             <entry key="@rtl" value="" />
             <entry key="ok" value="OK" />
-            <entry key="cancel" value="Cancel" />
             <entry key="edit" value="Edit" />
+            <entry key="cancel" value="Cancel" />
             <entry key="menu" value="Menu" />
         </lang>
     </l10n>

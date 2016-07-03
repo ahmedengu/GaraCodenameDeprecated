@@ -39,10 +39,10 @@ public abstract class StateMachineBase extends UIBuilder {
         UIBuilder.registerCustomComponent("TextArea", com.codename1.ui.TextArea.class);
         UIBuilder.registerCustomComponent("InfiniteProgress", com.codename1.components.InfiniteProgress.class);
         UIBuilder.registerCustomComponent("Dialog", com.codename1.ui.Dialog.class);
-        UIBuilder.registerCustomComponent("ContainerList", com.codename1.ui.list.ContainerList.class);
         UIBuilder.registerCustomComponent("Label", com.codename1.ui.Label.class);
         UIBuilder.registerCustomComponent("MapComponent", com.codename1.maps.MapComponent.class);
         UIBuilder.registerCustomComponent("Tabs", com.codename1.ui.Tabs.class);
+        UIBuilder.registerCustomComponent("List", com.codename1.ui.List.class);
         UIBuilder.registerCustomComponent("MultiButton", com.codename1.components.MultiButton.class);
         if(loadTheme) {
             if(res == null) {
@@ -84,10 +84,10 @@ public abstract class StateMachineBase extends UIBuilder {
         UIBuilder.registerCustomComponent("TextArea", com.codename1.ui.TextArea.class);
         UIBuilder.registerCustomComponent("InfiniteProgress", com.codename1.components.InfiniteProgress.class);
         UIBuilder.registerCustomComponent("Dialog", com.codename1.ui.Dialog.class);
-        UIBuilder.registerCustomComponent("ContainerList", com.codename1.ui.list.ContainerList.class);
         UIBuilder.registerCustomComponent("Label", com.codename1.ui.Label.class);
         UIBuilder.registerCustomComponent("MapComponent", com.codename1.maps.MapComponent.class);
         UIBuilder.registerCustomComponent("Tabs", com.codename1.ui.Tabs.class);
+        UIBuilder.registerCustomComponent("List", com.codename1.ui.List.class);
         UIBuilder.registerCustomComponent("MultiButton", com.codename1.components.MultiButton.class);
         if(loadTheme) {
             if(res == null) {
@@ -182,18 +182,6 @@ public abstract class StateMachineBase extends UIBuilder {
         com.codename1.ui.Label cmp = (com.codename1.ui.Label)findByName("Label10", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
             cmp = (com.codename1.ui.Label)findByName("Label10", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
-    public com.codename1.ui.list.ContainerList findContainerList(Component root) {
-        return (com.codename1.ui.list.ContainerList)findByName("ContainerList", root);
-    }
-
-    public com.codename1.ui.list.ContainerList findContainerList() {
-        com.codename1.ui.list.ContainerList cmp = (com.codename1.ui.list.ContainerList)findByName("ContainerList", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.list.ContainerList)findByName("ContainerList", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -462,6 +450,18 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
+    public com.codename1.ui.List findList(Component root) {
+        return (com.codename1.ui.List)findByName("List", root);
+    }
+
+    public com.codename1.ui.List findList() {
+        com.codename1.ui.List cmp = (com.codename1.ui.List)findByName("List", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.List)findByName("List", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
     public com.codename1.components.MultiButton findMultiButton(Component root) {
         return (com.codename1.components.MultiButton)findByName("MultiButton", root);
     }
@@ -590,6 +590,18 @@ public abstract class StateMachineBase extends UIBuilder {
         com.codename1.ui.Component cmp = (com.codename1.ui.Component)findByName("Register", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
             cmp = (com.codename1.ui.Component)findByName("Register", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.Container findGUI3(Component root) {
+        return (com.codename1.ui.Container)findByName("GUI 3", root);
+    }
+
+    public com.codename1.ui.Container findGUI3() {
+        com.codename1.ui.Container cmp = (com.codename1.ui.Container)findByName("GUI 3", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.Container)findByName("GUI 3", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -856,6 +868,12 @@ public abstract class StateMachineBase extends UIBuilder {
             return;
         }
 
+        if("GUI 3".equals(f.getName())) {
+            exitGUI3(f);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
             return;
     }
 
@@ -889,6 +907,10 @@ public abstract class StateMachineBase extends UIBuilder {
 
 
     protected void exitGUI2(Form f) {
+    }
+
+
+    protected void exitGUI3(Form f) {
     }
 
     protected void beforeShow(Form f) {
@@ -941,6 +963,12 @@ public abstract class StateMachineBase extends UIBuilder {
             return;
         }
 
+        if("GUI 3".equals(f.getName())) {
+            beforeGUI3(f);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
             return;
     }
 
@@ -974,6 +1002,10 @@ public abstract class StateMachineBase extends UIBuilder {
 
 
     protected void beforeGUI2(Form f) {
+    }
+
+
+    protected void beforeGUI3(Form f) {
     }
 
     protected void beforeShowContainer(Container c) {
@@ -1026,6 +1058,12 @@ public abstract class StateMachineBase extends UIBuilder {
             return;
         }
 
+        if("GUI 3".equals(c.getName())) {
+            beforeContainerGUI3(c);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
             return;
     }
 
@@ -1059,6 +1097,10 @@ public abstract class StateMachineBase extends UIBuilder {
 
 
     protected void beforeContainerGUI2(Container c) {
+    }
+
+
+    protected void beforeContainerGUI3(Container c) {
     }
 
     protected void postShow(Form f) {
@@ -1110,6 +1152,12 @@ public abstract class StateMachineBase extends UIBuilder {
             return;
         }
 
+        if("GUI 3".equals(f.getName())) {
+            postGUI3(f);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
             return;
     }
 
@@ -1143,6 +1191,10 @@ public abstract class StateMachineBase extends UIBuilder {
 
 
     protected void postGUI2(Form f) {
+    }
+
+
+    protected void postGUI3(Form f) {
     }
 
     protected void postShowContainer(Container c) {
@@ -1194,6 +1246,12 @@ public abstract class StateMachineBase extends UIBuilder {
             return;
         }
 
+        if("GUI 3".equals(c.getName())) {
+            postContainerGUI3(c);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
             return;
     }
 
@@ -1227,6 +1285,10 @@ public abstract class StateMachineBase extends UIBuilder {
 
 
     protected void postContainerGUI2(Container c) {
+    }
+
+
+    protected void postContainerGUI3(Container c) {
     }
 
     protected void onCreateRoot(String rootName) {
@@ -1278,6 +1340,12 @@ public abstract class StateMachineBase extends UIBuilder {
             return;
         }
 
+        if("GUI 3".equals(rootName)) {
+            onCreateGUI3();
+            aboutToShowThisContainer = null;
+            return;
+        }
+
             return;
     }
 
@@ -1311,6 +1379,10 @@ public abstract class StateMachineBase extends UIBuilder {
 
 
     protected void onCreateGUI2() {
+    }
+
+
+    protected void onCreateGUI3() {
     }
 
     protected Hashtable getFormState(Form f) {
@@ -1363,6 +1435,12 @@ public abstract class StateMachineBase extends UIBuilder {
             return h;
         }
 
+        if("GUI 3".equals(f.getName())) {
+            getStateGUI3(f, h);
+            aboutToShowThisContainer = null;
+            return h;
+        }
+
             return h;
     }
 
@@ -1396,6 +1474,10 @@ public abstract class StateMachineBase extends UIBuilder {
 
 
     protected void getStateGUI2(Form f, Hashtable h) {
+    }
+
+
+    protected void getStateGUI3(Form f, Hashtable h) {
     }
 
     protected void setFormState(Form f, Hashtable state) {
@@ -1448,6 +1530,12 @@ public abstract class StateMachineBase extends UIBuilder {
             return;
         }
 
+        if("GUI 3".equals(f.getName())) {
+            setStateGUI3(f, state);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
             return;
     }
 
@@ -1483,15 +1571,19 @@ public abstract class StateMachineBase extends UIBuilder {
     protected void setStateGUI2(Form f, Hashtable state) {
     }
 
-    protected boolean setListModel(com.codename1.ui.list.ContainerList cmp) {
+
+    protected void setStateGUI3(Form f, Hashtable state) {
+    }
+
+    protected boolean setListModel(List cmp) {
         String listName = cmp.getName();
-        if("ContainerList".equals(listName)) {
-            return initListModelContainerList(cmp);
+        if("List".equals(listName)) {
+            return initListModelList(cmp);
         }
         return super.setListModel(cmp);
     }
 
-    protected boolean initListModelContainerList(com.codename1.ui.list.ContainerList cmp) {
+    protected boolean initListModelList(List cmp) {
         return false;
     }
 
@@ -1601,8 +1693,8 @@ public abstract class StateMachineBase extends UIBuilder {
             }
         }
         if(rootContainerName.equals("GUI 2")) {
-            if("ContainerList".equals(c.getName())) {
-                onGUI2_ContainerListAction(c, event);
+            if("List".equals(c.getName())) {
+                onGUI2_ListAction(c, event);
                 return;
             }
         }
@@ -1671,7 +1763,7 @@ public abstract class StateMachineBase extends UIBuilder {
       protected void onGUI1_ButtonAction(Component c, ActionEvent event) {
       }
 
-      protected void onGUI2_ContainerListAction(Component c, ActionEvent event) {
+      protected void onGUI2_ListAction(Component c, ActionEvent event) {
       }
 
 }
