@@ -10,7 +10,6 @@ package userclasses;
 import com.codename1.location.Location;
 import com.codename1.location.LocationManager;
 import com.codename1.maps.Coord;
-import com.codename1.maps.MapComponent;
 import com.codename1.maps.layers.PointLayer;
 import com.codename1.maps.layers.PointsLayer;
 import com.codename1.ui.Component;
@@ -28,6 +27,8 @@ import java.io.IOException;
 public class StateMachine extends StateMachineBase {
     PointLayer distPoint;
     PointsLayer distLayer;
+    Long pointerPressed;
+    int pointerPressedX, pointerPressedY;
 
     public StateMachine(String resFile) {
         super(resFile);
@@ -121,12 +122,18 @@ public class StateMachine extends StateMachineBase {
 //
 //            });
 
-
+            findMapComponent().addPointerPressedListener(evt ->
+            {
+                pointerPressed = System.currentTimeMillis();
+                pointerPressedX = evt.getX();
+                pointerPressedY = evt.getY();
+            }
+            );
             findMapComponent().addPointerReleasedListener(evt -> {
+                int x = evt.getX();
+                int y = evt.getY();
 
-                MapComponent source = (MapComponent) evt.getSource();
-                final boolean longTap = source.isLongTap();
-
+                final boolean longTap = (System.currentTimeMillis()-pointerPressed>=150)&&x==pointerPressedX&&y==pointerPressedY;
                 if (longTap) {
                     Image image1 = fetchResourceFile().getImage("map-pin-green-hi.png");
                     String name1 = "Your Dist!";
@@ -141,17 +148,14 @@ public class StateMachine extends StateMachineBase {
                     findMapComponent().removeLayer(findMapComponent().getLayerAt(1));
 
                     findMapComponent().addLayer(distLayer);
-                    findMapComponent().revalidate();
-                    findMapComponent().repaint();
-                    f.revalidate();
-
-                    f.repaint();
                 }
             });
+
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
 
 }

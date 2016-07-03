@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <resource majorVersion="1" minorVersion="7" useXmlUI="false">
+    <ui name="GUI 1" />
+    <ui name="GUI 2" />
     <l10n name="L">
         <lang name="ar">
             <entry key="Button" value="Button" />
@@ -88,8 +90,23 @@
     <image name="profilePic.borderTopR_6.png" type="multi"  />
     <image name="profilePic.borderTopR_7.png" type="multi"  />
     <ui name="Register" />
+    <ui name="RideDialog" />
+    <ui name="Settings" />
+    <ui name="SplashScreen" />
+    <image name="Tabs.borderBottom_1.png" type="multi"  />
+    <image name="Tabs.borderBottomL_1.png" type="multi"  />
+    <image name="Tabs.borderBottomR_1.png" type="multi"  />
+    <image name="Tabs.borderCenter_1.png" type="multi"  />
+    <image name="Tabs.borderLeft_1.png" type="multi"  />
+    <image name="Tabs.borderRight_1.png" type="multi"  />
+    <image name="Tabs.borderTop_1.png" type="multi"  />
+    <image name="Tabs.borderTopL_1.png" type="multi"  />
+    <image name="Tabs.borderTopR_1.png" type="multi"  />
     <theme name="Theme">
         <val key="@includeNativeBool" value="true" />
+        <val key="@mapZoomButtonsBool" value="false" />
+        <val key="ContainerSlider.marUnit" value="2,0,0,0" />
+        <val key="ContainerSlider.margin" value="15,0,0,0" />
         <val key="Logo.align" value="4" />
         <val key="Logo.dis#derive" value="Logo" />
         <val key="Logo.marUnit" value="2,0,2,0" />

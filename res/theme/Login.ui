@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<component type="Form" name="Login" cloudDestinationProperty="Login" layout="BorderLayout" borderLayoutAbsoluteCenter="false" title="Login" >
+<component type="Form" name="Login" cloudDestinationProperty="Login" scrollableY="false" layout="BorderLayout" borderLayoutAbsoluteCenter="false" title="Login" >
   <component type="Button" name="Logo" cloudDestinationProperty="Logo" uiid="Logo" text="" icon="logo.png" >
     <layoutConstraint value="North" />
   </component>
