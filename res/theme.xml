@@ -14,8 +14,8 @@
             <entry key="Button" value="Button" />
             <entry key="@rtl" value="" />
             <entry key="ok" value="OK" />
-            <entry key="edit" value="Edit" />
             <entry key="cancel" value="Cancel" />
+            <entry key="edit" value="Edit" />
             <entry key="menu" value="Menu" />
         </lang>
     </l10n>
@@ -105,6 +105,7 @@
     <image name="Tabs.borderTopR_1.png" type="multi"  />
     <theme name="Theme">
         <val key="@includeNativeBool" value="true" />
+        <val key="@mapTileLoadingText" value="Loading ..." />
         <val key="@mapZoomButtonsBool" value="false" />
         <val key="ContainerSlider.marUnit" value="2,0,0,0" />
         <val key="ContainerSlider.margin" value="15,0,0,0" />

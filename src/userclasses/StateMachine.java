@@ -7,20 +7,23 @@
 
 package userclasses;
 
+import com.codename1.analytics.AnalyticsService;
 import com.codename1.components.ToastBar;
 import com.codename1.location.Location;
 import com.codename1.location.LocationManager;
 import com.codename1.maps.Coord;
+import com.codename1.maps.MapComponent;
 import com.codename1.maps.layers.PointLayer;
 import com.codename1.maps.layers.PointsLayer;
+import com.codename1.maps.providers.GoogleMapsProvider;
 import com.codename1.ui.Component;
+import com.codename1.ui.Dialog;
 import com.codename1.ui.Form;
 import com.codename1.ui.Image;
 import com.codename1.ui.events.ActionEvent;
+import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.util.Resources;
 import generated.StateMachineBase;
-
-import java.io.IOException;
 
 /**
  * @author Your name here
@@ -58,18 +61,29 @@ public class StateMachine extends StateMachineBase {
 
     @Override
     protected void beforeMainScreen(Form f) {
+
+
+        Image image = fetchResourceFile().getImage("map-pin-blue-hi.png");
+        String name = "You are here!";
+        PointsLayer pointsLayer = new PointsLayer();
+        Coord position;
         try {
-            Location lastKnownLocation = LocationManager.getLocationManager().getCurrentLocation();
-            Image image = fetchResourceFile().getImage("map-pin-blue-hi.png");
-            String name = "You are here!";
-            Coord position = new Coord(lastKnownLocation.getLatitude(), lastKnownLocation.getLongitude());
-            PointLayer pointLayer = new PointLayer(position, name, image);
-            pointLayer.setDisplayName(true);
+            Location currentLocation = LocationManager.getLocationManager().getCurrentLocation();
+            position = new Coord(currentLocation.getLatitude(), currentLocation.getLongitude());
+        } catch (Exception e) {
+            e.printStackTrace();
+            AnalyticsService.sendCrashReport(e, e.getMessage(), false);
+            Dialog.show("error", e.getMessage(), "ok", null);
 
-            PointsLayer pointsLayer = new PointsLayer();
-            pointsLayer.addPoint(pointLayer);
-
-            findMapComponent().addLayer(pointsLayer);
+            Location currentLocation = LocationManager.getLocationManager().getLastKnownLocation();
+            position = new Coord(currentLocation.getLatitude(), currentLocation.getLongitude());
+        }
+        MapComponent mapComponent = new MapComponent(new GoogleMapsProvider("AIzaSyAxlzXskkl3KKdjZUuFrV-j8oFjWOjtTIQ"), position, 5, true);
+        PointLayer pointLayer = new PointLayer(position, name, image);
+        pointLayer.setDisplayName(true);
+        pointsLayer.addPoint(pointLayer);
+        mapComponent.addLayer(pointsLayer);
+        findMapContainer().addComponent(BorderLayout.CENTER, mapComponent);
 
 
 //            findMapComponent().addMapListener((source, zoom, center) -> {
@@ -123,45 +137,43 @@ public class StateMachine extends StateMachineBase {
 //
 //            });
 
-            findMapComponent().addPointerPressedListener(evt ->
-            {
-                pointerPressed = System.currentTimeMillis();
-                pointerPressedX = evt.getX();
-                pointerPressedY = evt.getY();
-                ToastBar.showErrorMessage("hello werld");
-            }
-            );
-            findMapComponent().addPointerReleasedListener(evt -> {
-                int x = evt.getX();
-                int y = evt.getY();
-
-                final boolean longTap = (System.currentTimeMillis()-pointerPressed>=200)&&Math.abs(x-pointerPressedX)<=10&& Math.abs(y-pointerPressedY)<=10;
-                ToastBar.showErrorMessage("longTap:"+longTap+" time:"+ (System.currentTimeMillis()-pointerPressed) + " px:"+pointerPressedX+" x:"+x+" py:"+pointerPressedY+" y:"+y);
-
-                if (longTap) {
-//                    ToastBar.showErrorMessage("byebye");
-
-                    Image image1 = fetchResourceFile().getImage("map-pin-green-hi.png");
-                    String name1 = "Your Dist!";
-                    Coord coord = findMapComponent().getCoordFromPosition(evt.getX(), evt.getY());
-
-                    distPoint = new PointLayer(coord, name1, image1);
-                    distPoint.setDisplayName(true);
-                    distLayer = new PointsLayer();
-                    distLayer.addPoint(distPoint);
-
-                    while (findMapComponent().getLayersConut()>1)
-                    findMapComponent().removeLayer(findMapComponent().getLayerAt(1));
-
-                    findMapComponent().addLayer(distLayer);
+        mapComponent.addPointerPressedListener(evt ->
+                {
+                    pointerPressed = System.currentTimeMillis();
+                    pointerPressedX = evt.getX();
+                    pointerPressedY = evt.getY();
                 }
-            });
+        );
+        mapComponent.addPointerReleasedListener(evt -> {
+            int x = evt.getX();
+            int y = evt.getY();
+
+            final boolean longTap = (System.currentTimeMillis() - pointerPressed >= 200) && Math.abs(x - pointerPressedX) <= 10 && Math.abs(y - pointerPressedY) <= 10;
+            if (longTap) {
+                Image image1 = fetchResourceFile().getImage("map-pin-green-hi.png");
+                String name1 = "Your Dist!";
+                Coord coord = mapComponent.getCoordFromPosition(evt.getX(), evt.getY());
+
+                distPoint = new PointLayer(coord, name1, image1);
+                distPoint.setDisplayName(true);
+                distLayer = new PointsLayer();
+                distLayer.addPoint(distPoint);
+
+                while (mapComponent.getLayersConut() > 1)
+                    mapComponent.removeLayer(mapComponent.getLayerAt(1));
+
+                mapComponent.addLayer(distLayer);
+                ToastBar.showErrorMessage("analytics enabled: " + AnalyticsService.isEnabled());
+            }
+        });
 
 
+    }
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
+    @Override
+    protected void onGUI1_ButtonAction(Component c, ActionEvent event) {
+
     }
 
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <component type="Form" name="MainScreen" cloudDestinationProperty="MainScreen" scrollableY="false" layout="LayeredLayout" title="Home" >
-  <component type="MapComponent" name="MapComponent" cloudDestinationProperty="MapComponent" >
+  <component type="Container" name="MapContainer" cloudDestinationProperty="MapContainer" layout="BorderLayout" borderLayoutAbsoluteCenter="false" >
   </component>
   <component type="Container" name="Container" cloudDestinationProperty="Container" layout="FlowLayout" flowLayoutFillRows="false" flowLayoutAlign="3" flowLayoutValign="2" >
     <component type="Button" name="GoButton" cloudDestinationProperty="Button" commandName="Go" commandId="17" commandAction="RideDialog" commandBack="false" text="Go" >

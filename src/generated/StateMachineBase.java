@@ -8,10 +8,12 @@
 package generated;
 
 import com.codename1.ui.*;
-import com.codename1.ui.util.*;
-import com.codename1.ui.plaf.*;
+import com.codename1.ui.events.ActionEvent;
+import com.codename1.ui.plaf.UIManager;
+import com.codename1.ui.util.Resources;
+import com.codename1.ui.util.UIBuilder;
+
 import java.util.Hashtable;
-import com.codename1.ui.events.*;
 
 public abstract class StateMachineBase extends UIBuilder {
     private Container aboutToShowThisContainer;
@@ -40,7 +42,6 @@ public abstract class StateMachineBase extends UIBuilder {
         UIBuilder.registerCustomComponent("InfiniteProgress", com.codename1.components.InfiniteProgress.class);
         UIBuilder.registerCustomComponent("Dialog", com.codename1.ui.Dialog.class);
         UIBuilder.registerCustomComponent("Label", com.codename1.ui.Label.class);
-        UIBuilder.registerCustomComponent("MapComponent", com.codename1.maps.MapComponent.class);
         UIBuilder.registerCustomComponent("Tabs", com.codename1.ui.Tabs.class);
         UIBuilder.registerCustomComponent("List", com.codename1.ui.List.class);
         UIBuilder.registerCustomComponent("MultiButton", com.codename1.components.MultiButton.class);
@@ -85,7 +86,6 @@ public abstract class StateMachineBase extends UIBuilder {
         UIBuilder.registerCustomComponent("InfiniteProgress", com.codename1.components.InfiniteProgress.class);
         UIBuilder.registerCustomComponent("Dialog", com.codename1.ui.Dialog.class);
         UIBuilder.registerCustomComponent("Label", com.codename1.ui.Label.class);
-        UIBuilder.registerCustomComponent("MapComponent", com.codename1.maps.MapComponent.class);
         UIBuilder.registerCustomComponent("Tabs", com.codename1.ui.Tabs.class);
         UIBuilder.registerCustomComponent("List", com.codename1.ui.List.class);
         UIBuilder.registerCustomComponent("MultiButton", com.codename1.components.MultiButton.class);
@@ -258,6 +258,18 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
+    public com.codename1.ui.Container findMapContainer(Component root) {
+        return (com.codename1.ui.Container)findByName("MapContainer", root);
+    }
+
+    public com.codename1.ui.Container findMapContainer() {
+        com.codename1.ui.Container cmp = (com.codename1.ui.Container)findByName("MapContainer", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.Container)findByName("MapContainer", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
     public com.codename1.ui.Container findContainer5(Component root) {
         return (com.codename1.ui.Container)findByName("Container5", root);
     }
@@ -422,18 +434,6 @@ public abstract class StateMachineBase extends UIBuilder {
         com.codename1.ui.Label cmp = (com.codename1.ui.Label)findByName("Label6", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
             cmp = (com.codename1.ui.Label)findByName("Label6", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
-    public com.codename1.maps.MapComponent findMapComponent(Component root) {
-        return (com.codename1.maps.MapComponent)findByName("MapComponent", root);
-    }
-
-    public com.codename1.maps.MapComponent findMapComponent() {
-        com.codename1.maps.MapComponent cmp = (com.codename1.maps.MapComponent)findByName("MapComponent", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.maps.MapComponent)findByName("MapComponent", aboutToShowThisContainer);
         }
         return cmp;
     }
