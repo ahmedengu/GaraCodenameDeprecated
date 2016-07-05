@@ -8,12 +8,10 @@
 package generated;
 
 import com.codename1.ui.*;
-import com.codename1.ui.events.ActionEvent;
-import com.codename1.ui.plaf.UIManager;
-import com.codename1.ui.util.Resources;
-import com.codename1.ui.util.UIBuilder;
-
+import com.codename1.ui.util.*;
+import com.codename1.ui.plaf.*;
 import java.util.Hashtable;
+import com.codename1.ui.events.*;
 
 public abstract class StateMachineBase extends UIBuilder {
     private Container aboutToShowThisContainer;
@@ -258,18 +256,6 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
-    public com.codename1.ui.Container findMapContainer(Component root) {
-        return (com.codename1.ui.Container)findByName("MapContainer", root);
-    }
-
-    public com.codename1.ui.Container findMapContainer() {
-        com.codename1.ui.Container cmp = (com.codename1.ui.Container)findByName("MapContainer", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.Container)findByName("MapContainer", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
     public com.codename1.ui.Container findContainer5(Component root) {
         return (com.codename1.ui.Container)findByName("Container5", root);
     }
@@ -342,18 +328,6 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
-    public com.codename1.ui.Button findGoButton(Component root) {
-        return (com.codename1.ui.Button)findByName("GoButton", root);
-    }
-
-    public com.codename1.ui.Button findGoButton() {
-        com.codename1.ui.Button cmp = (com.codename1.ui.Button)findByName("GoButton", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.Button)findByName("GoButton", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
     public com.codename1.ui.Label findLabel5(Component root) {
         return (com.codename1.ui.Label)findByName("Label5", root);
     }
@@ -378,18 +352,6 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
-    public com.codename1.ui.Label findLabel4(Component root) {
-        return (com.codename1.ui.Label)findByName("Label4", root);
-    }
-
-    public com.codename1.ui.Label findLabel4() {
-        com.codename1.ui.Label cmp = (com.codename1.ui.Label)findByName("Label4", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.Label)findByName("Label4", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
     public com.codename1.ui.Button findButton(Component root) {
         return (com.codename1.ui.Button)findByName("Button", root);
     }
@@ -402,14 +364,14 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
-    public com.codename1.ui.Label findLabel7(Component root) {
-        return (com.codename1.ui.Label)findByName("Label7", root);
+    public com.codename1.ui.Label findLabel4(Component root) {
+        return (com.codename1.ui.Label)findByName("Label4", root);
     }
 
-    public com.codename1.ui.Label findLabel7() {
-        com.codename1.ui.Label cmp = (com.codename1.ui.Label)findByName("Label7", Display.getInstance().getCurrent());
+    public com.codename1.ui.Label findLabel4() {
+        com.codename1.ui.Label cmp = (com.codename1.ui.Label)findByName("Label4", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.Label)findByName("Label7", aboutToShowThisContainer);
+            cmp = (com.codename1.ui.Label)findByName("Label4", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -422,6 +384,18 @@ public abstract class StateMachineBase extends UIBuilder {
         com.codename1.ui.TextArea cmp = (com.codename1.ui.TextArea)findByName("Phone", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
             cmp = (com.codename1.ui.TextArea)findByName("Phone", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.Label findLabel7(Component root) {
+        return (com.codename1.ui.Label)findByName("Label7", root);
+    }
+
+    public com.codename1.ui.Label findLabel7() {
+        com.codename1.ui.Label cmp = (com.codename1.ui.Label)findByName("Label7", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.Label)findByName("Label7", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -619,7 +593,6 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
     public static final int COMMAND_MainScreenDriverArea = 8;
-    public static final int COMMAND_MainScreenGo = 17;
     public static final int COMMAND_RideDialogCancel = 18;
     public static final int COMMAND_MainScreenLogout = 12;
     public static final int COMMAND_MainScreenSettings = 10;
@@ -636,10 +609,6 @@ public abstract class StateMachineBase extends UIBuilder {
     public static final int COMMAND_RegisterRegister = 1;
 
     protected boolean onMainScreenDriverArea() {
-        return false;
-    }
-
-    protected boolean onMainScreenGo() {
         return false;
     }
 
@@ -703,13 +672,6 @@ public abstract class StateMachineBase extends UIBuilder {
         switch(cmd.getId()) {
             case COMMAND_MainScreenDriverArea:
                 if(onMainScreenDriverArea()) {
-                    ev.consume();
-                    return;
-                }
-                break;
-
-            case COMMAND_MainScreenGo:
-                if(onMainScreenGo()) {
                     ev.consume();
                     return;
                 }
@@ -844,12 +806,6 @@ public abstract class StateMachineBase extends UIBuilder {
             return;
         }
 
-        if("RideDialog".equals(f.getName())) {
-            exitRideDialog(f);
-            aboutToShowThisContainer = null;
-            return;
-        }
-
         if("Register".equals(f.getName())) {
             exitRegister(f);
             aboutToShowThisContainer = null;
@@ -874,6 +830,12 @@ public abstract class StateMachineBase extends UIBuilder {
             return;
         }
 
+        if("RideDialog".equals(f.getName())) {
+            exitRideDialog(f);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
             return;
     }
 
@@ -894,10 +856,6 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
-    protected void exitRideDialog(Form f) {
-    }
-
-
     protected void exitRegister(Form f) {
     }
 
@@ -911,6 +869,10 @@ public abstract class StateMachineBase extends UIBuilder {
 
 
     protected void exitGUI3(Form f) {
+    }
+
+
+    protected void exitRideDialog(Form f) {
     }
 
     protected void beforeShow(Form f) {
@@ -939,12 +901,6 @@ public abstract class StateMachineBase extends UIBuilder {
             return;
         }
 
-        if("RideDialog".equals(f.getName())) {
-            beforeRideDialog(f);
-            aboutToShowThisContainer = null;
-            return;
-        }
-
         if("Register".equals(f.getName())) {
             beforeRegister(f);
             aboutToShowThisContainer = null;
@@ -969,6 +925,12 @@ public abstract class StateMachineBase extends UIBuilder {
             return;
         }
 
+        if("RideDialog".equals(f.getName())) {
+            beforeRideDialog(f);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
             return;
     }
 
@@ -989,10 +951,6 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
-    protected void beforeRideDialog(Form f) {
-    }
-
-
     protected void beforeRegister(Form f) {
     }
 
@@ -1006,6 +964,10 @@ public abstract class StateMachineBase extends UIBuilder {
 
 
     protected void beforeGUI3(Form f) {
+    }
+
+
+    protected void beforeRideDialog(Form f) {
     }
 
     protected void beforeShowContainer(Container c) {
@@ -1034,12 +996,6 @@ public abstract class StateMachineBase extends UIBuilder {
             return;
         }
 
-        if("RideDialog".equals(c.getName())) {
-            beforeContainerRideDialog(c);
-            aboutToShowThisContainer = null;
-            return;
-        }
-
         if("Register".equals(c.getName())) {
             beforeContainerRegister(c);
             aboutToShowThisContainer = null;
@@ -1064,6 +1020,12 @@ public abstract class StateMachineBase extends UIBuilder {
             return;
         }
 
+        if("RideDialog".equals(c.getName())) {
+            beforeContainerRideDialog(c);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
             return;
     }
 
@@ -1084,10 +1046,6 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
-    protected void beforeContainerRideDialog(Container c) {
-    }
-
-
     protected void beforeContainerRegister(Container c) {
     }
 
@@ -1101,6 +1059,10 @@ public abstract class StateMachineBase extends UIBuilder {
 
 
     protected void beforeContainerGUI3(Container c) {
+    }
+
+
+    protected void beforeContainerRideDialog(Container c) {
     }
 
     protected void postShow(Form f) {
@@ -1124,12 +1086,6 @@ public abstract class StateMachineBase extends UIBuilder {
 
         if("SplashScreen".equals(f.getName())) {
             postSplashScreen(f);
-            aboutToShowThisContainer = null;
-            return;
-        }
-
-        if("RideDialog".equals(f.getName())) {
-            postRideDialog(f);
             aboutToShowThisContainer = null;
             return;
         }
@@ -1158,6 +1114,12 @@ public abstract class StateMachineBase extends UIBuilder {
             return;
         }
 
+        if("RideDialog".equals(f.getName())) {
+            postRideDialog(f);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
             return;
     }
 
@@ -1178,10 +1140,6 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
-    protected void postRideDialog(Form f) {
-    }
-
-
     protected void postRegister(Form f) {
     }
 
@@ -1195,6 +1153,10 @@ public abstract class StateMachineBase extends UIBuilder {
 
 
     protected void postGUI3(Form f) {
+    }
+
+
+    protected void postRideDialog(Form f) {
     }
 
     protected void postShowContainer(Container c) {
@@ -1218,12 +1180,6 @@ public abstract class StateMachineBase extends UIBuilder {
 
         if("SplashScreen".equals(c.getName())) {
             postContainerSplashScreen(c);
-            aboutToShowThisContainer = null;
-            return;
-        }
-
-        if("RideDialog".equals(c.getName())) {
-            postContainerRideDialog(c);
             aboutToShowThisContainer = null;
             return;
         }
@@ -1252,6 +1208,12 @@ public abstract class StateMachineBase extends UIBuilder {
             return;
         }
 
+        if("RideDialog".equals(c.getName())) {
+            postContainerRideDialog(c);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
             return;
     }
 
@@ -1272,10 +1234,6 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
-    protected void postContainerRideDialog(Container c) {
-    }
-
-
     protected void postContainerRegister(Container c) {
     }
 
@@ -1289,6 +1247,10 @@ public abstract class StateMachineBase extends UIBuilder {
 
 
     protected void postContainerGUI3(Container c) {
+    }
+
+
+    protected void postContainerRideDialog(Container c) {
     }
 
     protected void onCreateRoot(String rootName) {
@@ -1312,12 +1274,6 @@ public abstract class StateMachineBase extends UIBuilder {
 
         if("SplashScreen".equals(rootName)) {
             onCreateSplashScreen();
-            aboutToShowThisContainer = null;
-            return;
-        }
-
-        if("RideDialog".equals(rootName)) {
-            onCreateRideDialog();
             aboutToShowThisContainer = null;
             return;
         }
@@ -1346,6 +1302,12 @@ public abstract class StateMachineBase extends UIBuilder {
             return;
         }
 
+        if("RideDialog".equals(rootName)) {
+            onCreateRideDialog();
+            aboutToShowThisContainer = null;
+            return;
+        }
+
             return;
     }
 
@@ -1366,10 +1328,6 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
-    protected void onCreateRideDialog() {
-    }
-
-
     protected void onCreateRegister() {
     }
 
@@ -1383,6 +1341,10 @@ public abstract class StateMachineBase extends UIBuilder {
 
 
     protected void onCreateGUI3() {
+    }
+
+
+    protected void onCreateRideDialog() {
     }
 
     protected Hashtable getFormState(Form f) {
@@ -1411,12 +1373,6 @@ public abstract class StateMachineBase extends UIBuilder {
             return h;
         }
 
-        if("RideDialog".equals(f.getName())) {
-            getStateRideDialog(f, h);
-            aboutToShowThisContainer = null;
-            return h;
-        }
-
         if("Register".equals(f.getName())) {
             getStateRegister(f, h);
             aboutToShowThisContainer = null;
@@ -1441,6 +1397,12 @@ public abstract class StateMachineBase extends UIBuilder {
             return h;
         }
 
+        if("RideDialog".equals(f.getName())) {
+            getStateRideDialog(f, h);
+            aboutToShowThisContainer = null;
+            return h;
+        }
+
             return h;
     }
 
@@ -1461,10 +1423,6 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
-    protected void getStateRideDialog(Form f, Hashtable h) {
-    }
-
-
     protected void getStateRegister(Form f, Hashtable h) {
     }
 
@@ -1478,6 +1436,10 @@ public abstract class StateMachineBase extends UIBuilder {
 
 
     protected void getStateGUI3(Form f, Hashtable h) {
+    }
+
+
+    protected void getStateRideDialog(Form f, Hashtable h) {
     }
 
     protected void setFormState(Form f, Hashtable state) {
@@ -1506,12 +1468,6 @@ public abstract class StateMachineBase extends UIBuilder {
             return;
         }
 
-        if("RideDialog".equals(f.getName())) {
-            setStateRideDialog(f, state);
-            aboutToShowThisContainer = null;
-            return;
-        }
-
         if("Register".equals(f.getName())) {
             setStateRegister(f, state);
             aboutToShowThisContainer = null;
@@ -1536,6 +1492,12 @@ public abstract class StateMachineBase extends UIBuilder {
             return;
         }
 
+        if("RideDialog".equals(f.getName())) {
+            setStateRideDialog(f, state);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
             return;
     }
 
@@ -1556,10 +1518,6 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
-    protected void setStateRideDialog(Form f, Hashtable state) {
-    }
-
-
     protected void setStateRegister(Form f, Hashtable state) {
     }
 
@@ -1573,6 +1531,10 @@ public abstract class StateMachineBase extends UIBuilder {
 
 
     protected void setStateGUI3(Form f, Hashtable state) {
+    }
+
+
+    protected void setStateRideDialog(Form f, Hashtable state) {
     }
 
     protected boolean setListModel(List cmp) {
@@ -1632,22 +1594,6 @@ public abstract class StateMachineBase extends UIBuilder {
                 return;
             }
         }
-        if(rootContainerName.equals("MainScreen")) {
-            if("GoButton".equals(c.getName())) {
-                onMainScreen_GoButtonAction(c, event);
-                return;
-            }
-        }
-        if(rootContainerName.equals("RideDialog")) {
-            if("Button".equals(c.getName())) {
-                onRideDialog_ButtonAction(c, event);
-                return;
-            }
-            if("Button1".equals(c.getName())) {
-                onRideDialog_Button1Action(c, event);
-                return;
-            }
-        }
         if(rootContainerName.equals("Register")) {
             if("ProfilePic".equals(c.getName())) {
                 onRegister_ProfilePicAction(c, event);
@@ -1698,6 +1644,16 @@ public abstract class StateMachineBase extends UIBuilder {
                 return;
             }
         }
+        if(rootContainerName.equals("RideDialog")) {
+            if("Button".equals(c.getName())) {
+                onRideDialog_ButtonAction(c, event);
+                return;
+            }
+            if("Button1".equals(c.getName())) {
+                onRideDialog_Button1Action(c, event);
+                return;
+            }
+        }
     }
 
       protected void onSettings_MultiButtonAction(Component c, ActionEvent event) {
@@ -1722,15 +1678,6 @@ public abstract class StateMachineBase extends UIBuilder {
       }
 
       protected void onLogin_BtnNoAccountAction(Component c, ActionEvent event) {
-      }
-
-      protected void onMainScreen_GoButtonAction(Component c, ActionEvent event) {
-      }
-
-      protected void onRideDialog_ButtonAction(Component c, ActionEvent event) {
-      }
-
-      protected void onRideDialog_Button1Action(Component c, ActionEvent event) {
       }
 
       protected void onRegister_ProfilePicAction(Component c, ActionEvent event) {
@@ -1764,6 +1711,12 @@ public abstract class StateMachineBase extends UIBuilder {
       }
 
       protected void onGUI2_ListAction(Component c, ActionEvent event) {
+      }
+
+      protected void onRideDialog_ButtonAction(Component c, ActionEvent event) {
+      }
+
+      protected void onRideDialog_Button1Action(Component c, ActionEvent event) {
       }
 
 }

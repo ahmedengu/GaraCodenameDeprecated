@@ -1,10 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<component type="Form" name="MainScreen" cloudDestinationProperty="MainScreen" scrollableY="false" layout="LayeredLayout" title="Home" >
-  <component type="Container" name="MapContainer" cloudDestinationProperty="MapContainer" layout="BorderLayout" borderLayoutAbsoluteCenter="false" >
-  </component>
-  <component type="Container" name="Container" cloudDestinationProperty="Container" layout="FlowLayout" flowLayoutFillRows="false" flowLayoutAlign="3" flowLayoutValign="2" >
-    <component type="Button" name="GoButton" cloudDestinationProperty="Button" commandName="Go" commandId="17" commandAction="RideDialog" commandBack="false" text="Go" >
-    </component>
-  </component>
+<component type="Form" name="MainScreen" cloudDestinationProperty="MainScreen" scrollableY="false" layout="BorderLayout" borderLayoutAbsoluteCenter="false" title="Home" >
 <command name="Logout" id="12" action="" backCommand="false" /><command name="Chat" id="11" action="" backCommand="false" /><command name="Settings" id="10" action="Settings" backCommand="false" /><command name="Profile" id="9" action="" backCommand="false" /><command name="Driver area" id="8" action="" backCommand="false" /><command name="Become a driver" id="7" action="" backCommand="false" /><command name="Home" id="6" action="" backCommand="false" /></component>

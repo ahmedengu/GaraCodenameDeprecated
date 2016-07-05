@@ -83,7 +83,7 @@ public class StateMachine extends StateMachineBase {
         pointLayer.setDisplayName(true);
         pointsLayer.addPoint(pointLayer);
         mapComponent.addLayer(pointsLayer);
-        findMapContainer().addComponent(BorderLayout.CENTER, mapComponent);
+        f.addComponent(BorderLayout.CENTER, mapComponent);
 
 
 //            findMapComponent().addMapListener((source, zoom, center) -> {
