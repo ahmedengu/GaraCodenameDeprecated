@@ -9,5 +9,6 @@ public class RESTLinks {
     public static final String REGISTER = GARA + "/api/v1/member";
     public static final String UNIVERSITY = GARA + "/api/v1/university";
     public static final String MEMBER = GARA + "/api/v1/member";
+    public static final String DISPATCH = GARA + "/api/v1/dispatch";
 
 }

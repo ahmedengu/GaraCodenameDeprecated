@@ -361,4 +361,25 @@ public class StateMachine extends StateMachineBase {
                 addConstraint(findUrl(), new RegexConstraint("([A-Za-z0-9_\\-\\.])+\\.[Ee][Dd][Uu]", "Url should be valid"));
         v.addSubmitButtons(findRegister());
     }
+
+    @Override
+    protected boolean onMainScreenGetARide() {
+        if (sourcePoint == null || distPoint == null) {
+            ToastBar.showErrorMessage("You should choose your distention and enable GPS for the app to be able to get location");
+            return true;
+        }
+//        String token = Preferences.get("token", "");
+//        String dist = "10";
+//        String id = Preferences.get("id", "");
+//        String longitude = String.valueOf(sourcePoint.getLongitude());
+//        String latitude = String.valueOf(sourcePoint.getLatitude());
+//        String distLongitude = String.valueOf(distPoint.getLongitude());
+//        String distLatitude = String.valueOf(distPoint.getLatitude());
+//
+//        RequestsHandler.dispatchSync(id, token, dist, longitude, latitude, distLongitude, distLatitude);
+
+
+        return false;
+    }
+
 }

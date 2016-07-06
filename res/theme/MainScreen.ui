@@ -3,7 +3,7 @@
 <component type="Form" name="MainScreen" cloudDestinationProperty="MainScreen" scrollableY="false" layout="BorderLayout" borderLayoutAbsoluteCenter="false" title="Home" >
   <component type="Container" name="Container" cloudDestinationProperty="Container" layout="BoxLayout" boxLayoutAxis="Y" >
     <layoutConstraint value="South" />
-    <component type="Button" name="GetRide" cloudDestinationProperty="Button" uiid="ButtonGroupFirst" text="Get a ride " >
+    <component type="Button" name="GetRide" cloudDestinationProperty="Button" commandName="Get a ride " commandId="21" commandAction="RideDialog" commandBack="false" uiid="ButtonGroupFirst" text="Get a ride " >
     </component>
     <component type="Button" name="Drive" cloudDestinationProperty="Button1" uiid="ButtonGroupLast" focusable="true" text="Drive" >
     </component>

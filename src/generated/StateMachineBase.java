@@ -8,12 +8,10 @@
 package generated;
 
 import com.codename1.ui.*;
-import com.codename1.ui.events.ActionEvent;
-import com.codename1.ui.plaf.UIManager;
-import com.codename1.ui.util.Resources;
-import com.codename1.ui.util.UIBuilder;
-
+import com.codename1.ui.util.*;
+import com.codename1.ui.plaf.*;
 import java.util.Hashtable;
+import com.codename1.ui.events.*;
 
 public abstract class StateMachineBase extends UIBuilder {
     private Container aboutToShowThisContainer;
@@ -625,6 +623,7 @@ public abstract class StateMachineBase extends UIBuilder {
     public static final int COMMAND_MainScreenHome = 6;
     public static final int COMMAND_RideDialogConfirm = 16;
     public static final int COMMAND_MainScreenBecomeADriver = 7;
+    public static final int COMMAND_MainScreenGetARide = 21;
     public static final int COMMAND_LoginLogin = 5;
     public static final int COMMAND_AddUniversityRegister = 20;
     public static final int COMMAND_MainScreenChat = 11;
@@ -665,6 +664,10 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
     protected boolean onMainScreenBecomeADriver() {
+        return false;
+    }
+
+    protected boolean onMainScreenGetARide() {
         return false;
     }
 
@@ -752,6 +755,13 @@ public abstract class StateMachineBase extends UIBuilder {
 
             case COMMAND_MainScreenBecomeADriver:
                 if(onMainScreenBecomeADriver()) {
+                    ev.consume();
+                    return;
+                }
+                break;
+
+            case COMMAND_MainScreenGetARide:
+                if(onMainScreenGetARide()) {
                     ev.consume();
                     return;
                 }

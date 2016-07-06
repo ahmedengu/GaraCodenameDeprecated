@@ -51,4 +51,18 @@ public class RequestsHandler {
         NetworkManager.getInstance().addToQueueAndWait(request);
         return request;
     }
+
+    public static void dispatchSync(String id, String token, String dist, String longitude, String latitude, String distLongitude, String distLatitude) {
+        ConnectionRequest request = new ConnectionRequest(RESTLinks.DISPATCH, true);
+        request.addArgument("distLatitude", distLatitude);
+        request.addArgument("distLongitude", distLongitude);
+        request.addArgument("latitude", latitude);
+        request.addArgument("longitude", longitude);
+        request.addArgument("id", id);
+        request.addArgument("dist", dist);
+        request.addArgument("token", token);
+        request.setFailSilently(true);
+        request.setReadResponseForErrors(true);
+        NetworkManager.getInstance().addToQueueAndWait(request);
+    }
 }
