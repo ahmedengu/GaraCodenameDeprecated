@@ -10,7 +10,6 @@ package userclasses;
 import com.codename1.analytics.AnalyticsService;
 import com.codename1.components.ToastBar;
 import com.codename1.io.ConnectionRequest;
-import com.codename1.io.NetworkManager;
 import com.codename1.location.Location;
 import com.codename1.location.LocationManager;
 import com.codename1.maps.Coord;
@@ -27,7 +26,6 @@ import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.util.Resources;
 import com.codename1.ui.validation.RegexConstraint;
 import com.codename1.ui.validation.Validator;
-import com.g_ara.gara.RESTLinks;
 import com.g_ara.gara.RequestsHandler;
 import generated.StateMachineBase;
 
@@ -203,15 +201,7 @@ public class StateMachine extends StateMachineBase {
         String phone = findPhone().getText();
         String email = findEmail().getText();
 
-        ConnectionRequest request = new ConnectionRequest(RESTLinks.REGISTER, true);
-        request.addArgument("username", username);
-        request.addArgument("password", password);
-        request.addArgument("name", name);
-        request.addArgument("phonenumber", phone);
-        request.addArgument("studentemail", email);
-        request.setFailSilently(true);
-        request.setReadResponseForErrors(true);
-        NetworkManager.getInstance().addToQueueAndWait(request);
+        ConnectionRequest request = requestsHandler.registerSync(username, name, password, phone, email);
 
         if (request.getResponseCode()==201) {
             ToastBar.showErrorMessage("Registered");

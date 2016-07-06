@@ -718,4 +718,236 @@
         <val key="TitleCommand.press#fgColor" value="ffffff" />
         <font key="TitleCommand.press#font" type="ttf" face="0" style="0" size="0" name="native:MainRegular" family="native:MainRegular" sizeSettings="3" actualSize="3.0" />
         <val key="TitleCommand.press#margin" value="0,0,0,0" />
-        <val key="TitleCommand.press#padUnit" value="2,2,2
+        <val key="TitleCommand.press#padUnit" value="2,2,2,2" />
+        <val key="TitleCommand.press#padding" value="1,1,1,1" />
+        <val key="TitleCommand.press#transparency" value="0" />
+        <gradient key="TitleCommand.sel#bgGradient" color1="0" color2="0" posX="0.5" posY="0.5" radius="1.0" />
+        <val key="TitleCommand.sel#bgType" value="0" />
+        <border key="TitleCommand.sel#border" type="empty" />
+        <val key="TitleCommand.sel#fgColor" value="ffffff" />
+        <font key="TitleCommand.sel#font" type="ttf" face="0" style="0" size="0" name="native:MainRegular" family="native:MainRegular" sizeSettings="3" actualSize="3.0" />
+        <val key="TitleCommand.sel#margin" value="0,0,0,0" />
+        <val key="TitleCommand.sel#padUnit" value="2,2,2,2" />
+        <val key="TitleCommand.sel#padding" value="1,1,1,1" />
+        <val key="TitleCommand.sel#transparency" value="0" />
+        <val key="TitleCommand.transparency" value="0" />
+        <val key="ToastBarMessage.fgColor" value="ffffff" />
+        <font key="ToastBarMessage.font" type="ttf" face="0" style="0" size="0" name="native:MainThin" family="native:MainThin" sizeSettings="3" actualSize="3.0" />
+        <val key="ToastBarMessage.padUnit" value="2,2,2,2" />
+        <val key="ToastBarMessage.padding" value="2,2,1,1" />
+        <val key="ToggleButton.sel#align" value="4" />
+        <gradient key="ToggleButton.sel#bgGradient" color1="0" color2="0" posX="0.5" posY="0.5" radius="1.0" />
+        <val key="ToggleButton.sel#bgType" value="0" />
+        <border key="ToggleButton.sel#border" type="image" i1="OKGR.borderTop_1.png" i2="OKGR.borderBottom_1.png" i3="OKGR.borderLeft_1.png" i4="OKGR.borderRight_1.png" i5="OKGR.borderTopL_1.png" i6="OKGR.borderTopR_1.png" i7="OKGR.borderBottomL_1.png" i8="OKGR.borderBottomR_1.png" i9="OKGR.borderCenter_1.png" />
+        <val key="ToggleButton.sel#derive" value="Button" />
+        <val key="ToggleButton.sel#fgColor" value="ffffff" />
+        <font key="ToggleButton.sel#font" type="ttf" face="0" style="0" size="0" name="native:MainRegular" family="native:MainRegular" sizeSettings="3" actualSize="3.0" />
+        <val key="ToggleButton.sel#marUnit" value="2,2,2,2" />
+        <val key="ToggleButton.sel#margin" value="1,1,1,1" />
+        <val key="ToggleButton.sel#padUnit" value="2,2,2,2" />
+        <val key="ToggleButton.sel#padding" value="1,1,1,1" />
+        <val key="ToggleButton.sel#transparency" value="0" />
+        <val key="bgColor" value="ffffff" />
+        <border key="border" type="empty" />
+        <val key="fgColor" value="0" />
+        <font key="font" type="ttf" face="0" style="0" size="0" name="native:MainRegular" family="native:MainRegular" sizeSettings="3" actualSize="3.0" />
+        <val key="labelCenter.align" value="4" />
+        <val key="labelCenter.dis#derive" value="labelCenter" />
+        <val key="labelCenter.press#derive" value="labelCenter" />
+        <val key="labelCenter.sel#derive" value="labelCenter" />
+        <border key="press#border" type="empty" />
+        <val key="profilePic.align" value="4" />
+        <val key="profilePic.dis#derive" value="profilePic" />
+        <val key="profilePic.marUnit" value="2,0,2,0" />
+        <val key="profilePic.margin" value="5,5,0,0" />
+        <val key="profilePic.press#derive" value="profilePic" />
+        <val key="profilePic.sel#derive" value="profilePic" />
+        <border key="sel#border" type="empty" />
+        <val key="transparency" value="0" />
+    </theme>
+    <image name="border.png"  />
+    <image name="Button.dis#borderBottom_1.png" type="multi"  />
+    <image name="Button.dis#borderBottomL_1.png" type="multi"  />
+    <image name="Button.dis#borderBottomR_1.png" type="multi"  />
+    <image name="Button.dis#borderCenter_1.png" type="multi"  />
+    <image name="Button.dis#borderLeft_1.png" type="multi"  />
+    <image name="Button.dis#borderRight_1.png" type="multi"  />
+    <image name="Button.dis#borderTop_1.png" type="multi"  />
+    <image name="Button.dis#borderTopL_1.png" type="multi"  />
+    <image name="Button.dis#borderTopR_1.png" type="multi"  />
+    <image name="cal_left_arrow.png" type="multi"  />
+    <image name="cal_right_arrow.png" type="multi"  />
+    <image name="chbox1.png" type="multi"  />
+    <image name="chboxv1.png" type="multi"  />
+    <image name="ComboBox.borderBottom_1.png" type="multi"  />
+    <image name="ComboBox.borderBottomL_1.png" type="multi"  />
+    <image name="ComboBox.borderBottomR_1.png" type="multi"  />
+    <image name="ComboBox.borderCenter_1.png" type="multi"  />
+    <image name="ComboBox.borderLeft_1.png" type="multi"  />
+    <image name="ComboBox.borderRight_1.png" type="multi"  />
+    <image name="ComboBox.borderTop_1.png" type="multi"  />
+    <image name="ComboBox.borderTopL_1.png" type="multi"  />
+    <image name="ComboBox.borderTopR_1.png" type="multi"  />
+    <image name="ComboBox.sel#borderBottom_1.png" type="multi"  />
+    <image name="ComboBox.sel#borderBottomL_1.png" type="multi"  />
+    <image name="ComboBox.sel#borderBottomR_1.png" type="multi"  />
+    <image name="ComboBox.sel#borderCenter_1.png" type="multi"  />
+    <image name="ComboBox.sel#borderLeft_1.png" type="multi"  />
+    <image name="ComboBox.sel#borderRight_1.png" type="multi"  />
+    <image name="ComboBox.sel#borderTop_1.png" type="multi"  />
+    <image name="ComboBox.sel#borderTopL_1.png" type="multi"  />
+    <image name="ComboBox.sel#borderTopR_1.png" type="multi"  />
+    <image name="Dialog.borderBottom_1.png" type="multi"  />
+    <image name="Dialog.borderBottomL_1.png" type="multi"  />
+    <image name="Dialog.borderBottomR_1.png" type="multi"  />
+    <image name="Dialog.borderCenter_1.png" type="multi"  />
+    <image name="Dialog.borderLeft_1.png" type="multi"  />
+    <image name="Dialog.borderRight_1.png" type="multi"  />
+    <image name="Dialog.borderTop_1.png" type="multi"  />
+    <image name="Dialog.borderTopL_1.png" type="multi"  />
+    <image name="Dialog.borderTopR_1.png" type="multi"  />
+    <ui name="GUI 1" />
+    <ui name="GUI 2" />
+    <ui name="GUI 3" />
+    <l10n name="L">
+        <lang name="ar">
+            <entry key="select" value="" />
+            <entry key="Button" value="Button" />
+            <entry key="@rtl" value="true" />
+            <entry key="ok" value="" />
+            <entry key="edit" value="" />
+            <entry key="cancel" value="" />
+            <entry key="menu" value="" />
+        </lang>
+        <lang name="en">
+            <entry key="select" value="Select" />
+            <entry key="Button" value="Button" />
+            <entry key="@rtl" value="" />
+            <entry key="ok" value="OK" />
+            <entry key="edit" value="Edit" />
+            <entry key="cancel" value="Cancel" />
+            <entry key="menu" value="Menu" />
+        </lang>
+    </l10n>
+    <ui name="Login" />
+    <image name="logo.png" type="multi"  />
+    <ui name="MainScreen" />
+    <image name="map-pin-blue-hi.png" type="multi"  />
+    <image name="map-pin-green-hi.png" type="multi"  />
+    <image name="map-pin-red-hi.png" type="multi"  />
+    <image name="map-pin-yellow-hi.png" type="multi"  />
+    <image name="Menu.borderBottom_2.png" type="multi"  />
+    <image name="Menu.borderBottomL_2.png" type="multi"  />
+    <image name="Menu.borderBottomR_2.png" type="multi"  />
+    <image name="Menu.borderCenter_2.png" type="multi"  />
+    <image name="Menu.borderLeft_2.png" type="multi"  />
+    <image name="Menu.borderRight_2.png" type="multi"  />
+    <image name="Menu.borderTop_2.png" type="multi"  />
+    <image name="Menu.borderTopL_2.png" type="multi"  />
+    <image name="Menu.borderTopR_2.png" type="multi"  />
+    <image name="OKGR.borderBottom_1.png" type="multi"  />
+    <image name="OKGR.borderBottomL_1.png" type="multi"  />
+    <image name="OKGR.borderBottomR_1.png" type="multi"  />
+    <image name="OKGR.borderCenter_1.png" type="multi"  />
+    <image name="OKGR.borderLeft_1.png" type="multi"  />
+    <image name="OKGR.borderRight_1.png" type="multi"  />
+    <image name="OKGR.borderTop_1.png" type="multi"  />
+    <image name="OKGR.borderTopL_1.png" type="multi"  />
+    <image name="OKGR.borderTopR_1.png" type="multi"  />
+    <image name="profile.png" type="multi"  />
+    <image name="profilePic.borderBottom_1.png" type="multi"  />
+    <image name="profilePic.borderBottom_2.png" type="multi"  />
+    <image name="profilePic.borderBottom_3.png" type="multi"  />
+    <image name="profilePic.borderBottom_4.png" type="multi"  />
+    <image name="profilePic.borderBottom_5.png" type="multi"  />
+    <image name="profilePic.borderBottom_6.png" type="multi"  />
+    <image name="profilePic.borderBottom_7.png" type="multi"  />
+    <image name="profilePic.borderBottomL_1.png" type="multi"  />
+    <image name="profilePic.borderBottomL_2.png" type="multi"  />
+    <image name="profilePic.borderBottomL_3.png" type="multi"  />
+    <image name="profilePic.borderBottomL_4.png" type="multi"  />
+    <image name="profilePic.borderBottomL_5.png" type="multi"  />
+    <image name="profilePic.borderBottomL_6.png" type="multi"  />
+    <image name="profilePic.borderBottomL_7.png" type="multi"  />
+    <image name="profilePic.borderBottomR_1.png" type="multi"  />
+    <image name="profilePic.borderBottomR_2.png" type="multi"  />
+    <image name="profilePic.borderBottomR_3.png" type="multi"  />
+    <image name="profilePic.borderBottomR_4.png" type="multi"  />
+    <image name="profilePic.borderBottomR_5.png" type="multi"  />
+    <image name="profilePic.borderBottomR_6.png" type="multi"  />
+    <image name="profilePic.borderBottomR_7.png" type="multi"  />
+    <image name="profilePic.borderCenter_1.png" type="multi"  />
+    <image name="profilePic.borderCenter_2.png" type="multi"  />
+    <image name="profilePic.borderCenter_3.png" type="multi"  />
+    <image name="profilePic.borderCenter_4.png" type="multi"  />
+    <image name="profilePic.borderCenter_5.png" type="multi"  />
+    <image name="profilePic.borderCenter_6.png" type="multi"  />
+    <image name="profilePic.borderCenter_7.png" type="multi"  />
+    <image name="profilePic.borderLeft_1.png" type="multi"  />
+    <image name="profilePic.borderLeft_2.png" type="multi"  />
+    <image name="profilePic.borderLeft_3.png" type="multi"  />
+    <image name="profilePic.borderLeft_4.png" type="multi"  />
+    <image name="profilePic.borderLeft_5.png" type="multi"  />
+    <image name="profilePic.borderLeft_6.png" type="multi"  />
+    <image name="profilePic.borderLeft_7.png" type="multi"  />
+    <image name="profilePic.borderRight_1.png" type="multi"  />
+    <image name="profilePic.borderRight_2.png" type="multi"  />
+    <image name="profilePic.borderRight_3.png" type="multi"  />
+    <image name="profilePic.borderRight_4.png" type="multi"  />
+    <image name="profilePic.borderRight_5.png" type="multi"  />
+    <image name="profilePic.borderRight_6.png" type="multi"  />
+    <image name="profilePic.borderRight_7.png" type="multi"  />
+    <image name="profilePic.borderTop_1.png" type="multi"  />
+    <image name="profilePic.borderTop_2.png" type="multi"  />
+    <image name="profilePic.borderTop_3.png" type="multi"  />
+    <image name="profilePic.borderTop_4.png" type="multi"  />
+    <image name="profilePic.borderTop_5.png" type="multi"  />
+    <image name="profilePic.borderTop_6.png" type="multi"  />
+    <image name="profilePic.borderTop_7.png" type="multi"  />
+    <image name="profilePic.borderTopL_1.png" type="multi"  />
+    <image name="profilePic.borderTopL_2.png" type="multi"  />
+    <image name="profilePic.borderTopL_3.png" type="multi"  />
+    <image name="profilePic.borderTopL_4.png" type="multi"  />
+    <image name="profilePic.borderTopL_5.png" type="multi"  />
+    <image name="profilePic.borderTopL_6.png" type="multi"  />
+    <image name="profilePic.borderTopL_7.png" type="multi"  />
+    <image name="profilePic.borderTopR_1.png" type="multi"  />
+    <image name="profilePic.borderTopR_2.png" type="multi"  />
+    <image name="profilePic.borderTopR_3.png" type="multi"  />
+    <image name="profilePic.borderTopR_4.png" type="multi"  />
+    <image name="profilePic.borderTopR_5.png" type="multi"  />
+    <image name="profilePic.borderTopR_6.png" type="multi"  />
+    <image name="profilePic.borderTopR_7.png" type="multi"  />
+    <ui name="Register" />
+    <ui name="RideDialog" />
+    <image name="round.png" type="multi"  />
+    <ui name="Settings" />
+    <image name="sliderBlueCenter.png" type="multi"  />
+    <image name="sliderBlueLeft.png" type="multi"  />
+    <image name="sliderBlueRight.png" type="multi"  />
+    <image name="sliderEmpty.png" type="multi"  />
+    <image name="sliderEmptyLeft.png" type="multi"  />
+    <image name="sliderEmptyRight.png" type="multi"  />
+    <ui name="SplashScreen" />
+    <image name="switch_mask.png" type="multi"  />
+    <image name="switch_off.png" type="multi"  />
+    <image name="switch_on.png" type="multi"  />
+    <image name="Tabs.borderBottom_1.png" type="multi"  />
+    <image name="Tabs.borderBottomL_1.png" type="multi"  />
+    <image name="Tabs.borderBottomR_1.png" type="multi"  />
+    <image name="Tabs.borderCenter_1.png" type="multi"  />
+    <image name="Tabs.borderLeft_1.png" type="multi"  />
+    <image name="Tabs.borderRight_1.png" type="multi"  />
+    <image name="Tabs.borderTop_1.png" type="multi"  />
+    <image name="Tabs.borderTopL_1.png" type="multi"  />
+    <image name="Tabs.borderTopR_1.png" type="multi"  />
+    <image name="TitleArea.borderBottom_2.png" type="multi"  />
+    <image name="TitleArea.borderBottomL_2.png" type="multi"  />
+    <image name="TitleArea.borderBottomR_2.png" type="multi"  />
+    <image name="TitleArea.borderCenter_2.png" type="multi"  />
+    <image name="TitleArea.borderLeft_2.png" type="multi"  />
+    <image name="TitleArea.borderRight_2.png" type="multi"  />
+    <image name="TitleArea.borderTop_2.png" type="multi"  />
+    <image name="TitleArea.borderTopL_2.png" type="multi"  />
+    <image name="TitleArea.borderTopR_2.png" type="multi"  />
+</resource>
