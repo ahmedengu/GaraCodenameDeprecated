@@ -8,10 +8,12 @@
 package generated;
 
 import com.codename1.ui.*;
-import com.codename1.ui.util.*;
-import com.codename1.ui.plaf.*;
+import com.codename1.ui.events.ActionEvent;
+import com.codename1.ui.plaf.UIManager;
+import com.codename1.ui.util.Resources;
+import com.codename1.ui.util.UIBuilder;
+
 import java.util.Hashtable;
-import com.codename1.ui.events.*;
 
 public abstract class StateMachineBase extends UIBuilder {
     private Container aboutToShowThisContainer;
@@ -40,7 +42,6 @@ public abstract class StateMachineBase extends UIBuilder {
         UIBuilder.registerCustomComponent("InfiniteProgress", com.codename1.components.InfiniteProgress.class);
         UIBuilder.registerCustomComponent("Dialog", com.codename1.ui.Dialog.class);
         UIBuilder.registerCustomComponent("Label", com.codename1.ui.Label.class);
-        UIBuilder.registerCustomComponent("Tabs", com.codename1.ui.Tabs.class);
         UIBuilder.registerCustomComponent("List", com.codename1.ui.List.class);
         UIBuilder.registerCustomComponent("MultiButton", com.codename1.components.MultiButton.class);
         if(loadTheme) {
@@ -84,7 +85,6 @@ public abstract class StateMachineBase extends UIBuilder {
         UIBuilder.registerCustomComponent("InfiniteProgress", com.codename1.components.InfiniteProgress.class);
         UIBuilder.registerCustomComponent("Dialog", com.codename1.ui.Dialog.class);
         UIBuilder.registerCustomComponent("Label", com.codename1.ui.Label.class);
-        UIBuilder.registerCustomComponent("Tabs", com.codename1.ui.Tabs.class);
         UIBuilder.registerCustomComponent("List", com.codename1.ui.List.class);
         UIBuilder.registerCustomComponent("MultiButton", com.codename1.components.MultiButton.class);
         if(loadTheme) {
@@ -132,6 +132,18 @@ public abstract class StateMachineBase extends UIBuilder {
         com.codename1.ui.Label cmp = (com.codename1.ui.Label)findByName("Label11", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
             cmp = (com.codename1.ui.Label)findByName("Label11", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.Button findAdd(Component root) {
+        return (com.codename1.ui.Button)findByName("Add", root);
+    }
+
+    public com.codename1.ui.Button findAdd() {
+        com.codename1.ui.Button cmp = (com.codename1.ui.Button)findByName("Add", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.Button)findByName("Add", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -208,18 +220,6 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
-    public com.codename1.ui.Container findContainer4(Component root) {
-        return (com.codename1.ui.Container)findByName("Container4", root);
-    }
-
-    public com.codename1.ui.Container findContainer4() {
-        com.codename1.ui.Container cmp = (com.codename1.ui.Container)findByName("Container4", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.Container)findByName("Container4", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
     public com.codename1.ui.Container findContainer1(Component root) {
         return (com.codename1.ui.Container)findByName("Container1", root);
     }
@@ -244,6 +244,18 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
+    public com.codename1.ui.TextArea findEmailFormat(Component root) {
+        return (com.codename1.ui.TextArea)findByName("EmailFormat", root);
+    }
+
+    public com.codename1.ui.TextArea findEmailFormat() {
+        com.codename1.ui.TextArea cmp = (com.codename1.ui.TextArea)findByName("EmailFormat", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.TextArea)findByName("EmailFormat", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
     public com.codename1.components.MultiButton findMultiButton2(Component root) {
         return (com.codename1.components.MultiButton)findByName("MultiButton2", root);
     }
@@ -256,14 +268,14 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
-    public com.codename1.ui.Container findContainer5(Component root) {
-        return (com.codename1.ui.Container)findByName("Container5", root);
+    public com.codename1.ui.TextArea findUrl(Component root) {
+        return (com.codename1.ui.TextArea)findByName("Url", root);
     }
 
-    public com.codename1.ui.Container findContainer5() {
-        com.codename1.ui.Container cmp = (com.codename1.ui.Container)findByName("Container5", Display.getInstance().getCurrent());
+    public com.codename1.ui.TextArea findUrl() {
+        com.codename1.ui.TextArea cmp = (com.codename1.ui.TextArea)findByName("Url", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.Container)findByName("Container5", aboutToShowThisContainer);
+            cmp = (com.codename1.ui.TextArea)findByName("Url", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -352,18 +364,6 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
-    public com.codename1.ui.Button findButton(Component root) {
-        return (com.codename1.ui.Button)findByName("Button", root);
-    }
-
-    public com.codename1.ui.Button findButton() {
-        com.codename1.ui.Button cmp = (com.codename1.ui.Button)findByName("Button", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.Button)findByName("Button", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
     public com.codename1.components.InfiniteProgress findInfiniteProgress(Component root) {
         return (com.codename1.components.InfiniteProgress)findByName("InfiniteProgress", root);
     }
@@ -384,6 +384,18 @@ public abstract class StateMachineBase extends UIBuilder {
         com.codename1.ui.Label cmp = (com.codename1.ui.Label)findByName("Label4", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
             cmp = (com.codename1.ui.Label)findByName("Label4", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.ui.Button findButton(Component root) {
+        return (com.codename1.ui.Button)findByName("Button", root);
+    }
+
+    public com.codename1.ui.Button findButton() {
+        com.codename1.ui.Button cmp = (com.codename1.ui.Button)findByName("Button", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.Button)findByName("Button", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -424,14 +436,14 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
-    public com.codename1.ui.Button findProfilePic(Component root) {
-        return (com.codename1.ui.Button)findByName("ProfilePic", root);
+    public com.codename1.ui.Button findDrive(Component root) {
+        return (com.codename1.ui.Button)findByName("Drive", root);
     }
 
-    public com.codename1.ui.Button findProfilePic() {
-        com.codename1.ui.Button cmp = (com.codename1.ui.Button)findByName("ProfilePic", Display.getInstance().getCurrent());
+    public com.codename1.ui.Button findDrive() {
+        com.codename1.ui.Button cmp = (com.codename1.ui.Button)findByName("Drive", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.Button)findByName("ProfilePic", aboutToShowThisContainer);
+            cmp = (com.codename1.ui.Button)findByName("Drive", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -456,18 +468,6 @@ public abstract class StateMachineBase extends UIBuilder {
         com.codename1.components.MultiButton cmp = (com.codename1.components.MultiButton)findByName("MultiButton", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
             cmp = (com.codename1.components.MultiButton)findByName("MultiButton", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
-    public com.codename1.ui.Tabs findTabs1(Component root) {
-        return (com.codename1.ui.Tabs)findByName("Tabs1", root);
-    }
-
-    public com.codename1.ui.Tabs findTabs1() {
-        com.codename1.ui.Tabs cmp = (com.codename1.ui.Tabs)findByName("Tabs1", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.Tabs)findByName("Tabs1", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -532,6 +532,18 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
+    public com.codename1.ui.Button findGetRide(Component root) {
+        return (com.codename1.ui.Button)findByName("GetRide", root);
+    }
+
+    public com.codename1.ui.Button findGetRide() {
+        com.codename1.ui.Button cmp = (com.codename1.ui.Button)findByName("GetRide", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.Button)findByName("GetRide", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
     public com.codename1.ui.TextArea findUsername(Component root) {
         return (com.codename1.ui.TextArea)findByName("Username", root);
     }
@@ -568,6 +580,18 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
+    public com.codename1.ui.Component findAddUniversity(Component root) {
+        return (com.codename1.ui.Component)findByName("AddUniversity", root);
+    }
+
+    public com.codename1.ui.Component findAddUniversity() {
+        com.codename1.ui.Component cmp = (com.codename1.ui.Component)findByName("AddUniversity", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.Component)findByName("AddUniversity", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
     public com.codename1.ui.Container findGUI3(Component root) {
         return (com.codename1.ui.Container)findByName("GUI 3", root);
     }
@@ -596,17 +620,17 @@ public abstract class StateMachineBase extends UIBuilder {
     public static final int COMMAND_RideDialogCancel = 18;
     public static final int COMMAND_MainScreenLogout = 12;
     public static final int COMMAND_MainScreenSettings = 10;
+    public static final int COMMAND_LoginRegisterNow = 4;
     public static final int COMMAND_MainScreenProfile = 9;
     public static final int COMMAND_MainScreenHome = 6;
-    public static final int COMMAND_GUI1Register = 14;
     public static final int COMMAND_RideDialogConfirm = 16;
-    public static final int COMMAND_LoginDonTHaveAnAccountRegisterNow = 4;
     public static final int COMMAND_MainScreenBecomeADriver = 7;
-    public static final int COMMAND_GUI1Login = 13;
-    public static final int COMMAND_RegisterAlreadyAMemberLogin = 2;
     public static final int COMMAND_LoginLogin = 5;
+    public static final int COMMAND_AddUniversityRegister = 20;
     public static final int COMMAND_MainScreenChat = 11;
+    public static final int COMMAND_RegisterAddUniversity = 19;
     public static final int COMMAND_RegisterRegister = 1;
+    public static final int COMMAND_RegisterAlreadyAMember = 2;
 
     protected boolean onMainScreenDriverArea() {
         return false;
@@ -624,6 +648,10 @@ public abstract class StateMachineBase extends UIBuilder {
         return false;
     }
 
+    protected boolean onLoginRegisterNow() {
+        return false;
+    }
+
     protected boolean onMainScreenProfile() {
         return false;
     }
@@ -632,15 +660,7 @@ public abstract class StateMachineBase extends UIBuilder {
         return false;
     }
 
-    protected boolean onGUI1Register() {
-        return false;
-    }
-
     protected boolean onRideDialogConfirm() {
-        return false;
-    }
-
-    protected boolean onLoginDonTHaveAnAccountRegisterNow() {
         return false;
     }
 
@@ -648,15 +668,11 @@ public abstract class StateMachineBase extends UIBuilder {
         return false;
     }
 
-    protected boolean onGUI1Login() {
-        return false;
-    }
-
-    protected boolean onRegisterAlreadyAMemberLogin() {
-        return false;
-    }
-
     protected boolean onLoginLogin() {
+        return false;
+    }
+
+    protected boolean onAddUniversityRegister() {
         return false;
     }
 
@@ -664,7 +680,15 @@ public abstract class StateMachineBase extends UIBuilder {
         return false;
     }
 
+    protected boolean onRegisterAddUniversity() {
+        return false;
+    }
+
     protected boolean onRegisterRegister() {
+        return false;
+    }
+
+    protected boolean onRegisterAlreadyAMember() {
         return false;
     }
 
@@ -698,6 +722,13 @@ public abstract class StateMachineBase extends UIBuilder {
                 }
                 break;
 
+            case COMMAND_LoginRegisterNow:
+                if(onLoginRegisterNow()) {
+                    ev.consume();
+                    return;
+                }
+                break;
+
             case COMMAND_MainScreenProfile:
                 if(onMainScreenProfile()) {
                     ev.consume();
@@ -712,22 +743,8 @@ public abstract class StateMachineBase extends UIBuilder {
                 }
                 break;
 
-            case COMMAND_GUI1Register:
-                if(onGUI1Register()) {
-                    ev.consume();
-                    return;
-                }
-                break;
-
             case COMMAND_RideDialogConfirm:
                 if(onRideDialogConfirm()) {
-                    ev.consume();
-                    return;
-                }
-                break;
-
-            case COMMAND_LoginDonTHaveAnAccountRegisterNow:
-                if(onLoginDonTHaveAnAccountRegisterNow()) {
                     ev.consume();
                     return;
                 }
@@ -740,22 +757,15 @@ public abstract class StateMachineBase extends UIBuilder {
                 }
                 break;
 
-            case COMMAND_GUI1Login:
-                if(onGUI1Login()) {
-                    ev.consume();
-                    return;
-                }
-                break;
-
-            case COMMAND_RegisterAlreadyAMemberLogin:
-                if(onRegisterAlreadyAMemberLogin()) {
-                    ev.consume();
-                    return;
-                }
-                break;
-
             case COMMAND_LoginLogin:
                 if(onLoginLogin()) {
+                    ev.consume();
+                    return;
+                }
+                break;
+
+            case COMMAND_AddUniversityRegister:
+                if(onAddUniversityRegister()) {
                     ev.consume();
                     return;
                 }
@@ -768,8 +778,22 @@ public abstract class StateMachineBase extends UIBuilder {
                 }
                 break;
 
+            case COMMAND_RegisterAddUniversity:
+                if(onRegisterAddUniversity()) {
+                    ev.consume();
+                    return;
+                }
+                break;
+
             case COMMAND_RegisterRegister:
                 if(onRegisterRegister()) {
+                    ev.consume();
+                    return;
+                }
+                break;
+
+            case COMMAND_RegisterAlreadyAMember:
+                if(onRegisterAlreadyAMember()) {
                     ev.consume();
                     return;
                 }
@@ -812,12 +836,6 @@ public abstract class StateMachineBase extends UIBuilder {
             return;
         }
 
-        if("GUI 1".equals(f.getName())) {
-            exitGUI1(f);
-            aboutToShowThisContainer = null;
-            return;
-        }
-
         if("GUI 2".equals(f.getName())) {
             exitGUI2(f);
             aboutToShowThisContainer = null;
@@ -832,6 +850,12 @@ public abstract class StateMachineBase extends UIBuilder {
 
         if("RideDialog".equals(f.getName())) {
             exitRideDialog(f);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
+        if("AddUniversity".equals(f.getName())) {
+            exitAddUniversity(f);
             aboutToShowThisContainer = null;
             return;
         }
@@ -860,10 +884,6 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
-    protected void exitGUI1(Form f) {
-    }
-
-
     protected void exitGUI2(Form f) {
     }
 
@@ -873,6 +893,10 @@ public abstract class StateMachineBase extends UIBuilder {
 
 
     protected void exitRideDialog(Form f) {
+    }
+
+
+    protected void exitAddUniversity(Form f) {
     }
 
     protected void beforeShow(Form f) {
@@ -907,12 +931,6 @@ public abstract class StateMachineBase extends UIBuilder {
             return;
         }
 
-        if("GUI 1".equals(f.getName())) {
-            beforeGUI1(f);
-            aboutToShowThisContainer = null;
-            return;
-        }
-
         if("GUI 2".equals(f.getName())) {
             beforeGUI2(f);
             aboutToShowThisContainer = null;
@@ -927,6 +945,12 @@ public abstract class StateMachineBase extends UIBuilder {
 
         if("RideDialog".equals(f.getName())) {
             beforeRideDialog(f);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
+        if("AddUniversity".equals(f.getName())) {
+            beforeAddUniversity(f);
             aboutToShowThisContainer = null;
             return;
         }
@@ -955,10 +979,6 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
-    protected void beforeGUI1(Form f) {
-    }
-
-
     protected void beforeGUI2(Form f) {
     }
 
@@ -968,6 +988,10 @@ public abstract class StateMachineBase extends UIBuilder {
 
 
     protected void beforeRideDialog(Form f) {
+    }
+
+
+    protected void beforeAddUniversity(Form f) {
     }
 
     protected void beforeShowContainer(Container c) {
@@ -1002,12 +1026,6 @@ public abstract class StateMachineBase extends UIBuilder {
             return;
         }
 
-        if("GUI 1".equals(c.getName())) {
-            beforeContainerGUI1(c);
-            aboutToShowThisContainer = null;
-            return;
-        }
-
         if("GUI 2".equals(c.getName())) {
             beforeContainerGUI2(c);
             aboutToShowThisContainer = null;
@@ -1022,6 +1040,12 @@ public abstract class StateMachineBase extends UIBuilder {
 
         if("RideDialog".equals(c.getName())) {
             beforeContainerRideDialog(c);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
+        if("AddUniversity".equals(c.getName())) {
+            beforeContainerAddUniversity(c);
             aboutToShowThisContainer = null;
             return;
         }
@@ -1050,10 +1074,6 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
-    protected void beforeContainerGUI1(Container c) {
-    }
-
-
     protected void beforeContainerGUI2(Container c) {
     }
 
@@ -1063,6 +1083,10 @@ public abstract class StateMachineBase extends UIBuilder {
 
 
     protected void beforeContainerRideDialog(Container c) {
+    }
+
+
+    protected void beforeContainerAddUniversity(Container c) {
     }
 
     protected void postShow(Form f) {
@@ -1096,12 +1120,6 @@ public abstract class StateMachineBase extends UIBuilder {
             return;
         }
 
-        if("GUI 1".equals(f.getName())) {
-            postGUI1(f);
-            aboutToShowThisContainer = null;
-            return;
-        }
-
         if("GUI 2".equals(f.getName())) {
             postGUI2(f);
             aboutToShowThisContainer = null;
@@ -1116,6 +1134,12 @@ public abstract class StateMachineBase extends UIBuilder {
 
         if("RideDialog".equals(f.getName())) {
             postRideDialog(f);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
+        if("AddUniversity".equals(f.getName())) {
+            postAddUniversity(f);
             aboutToShowThisContainer = null;
             return;
         }
@@ -1144,10 +1168,6 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
-    protected void postGUI1(Form f) {
-    }
-
-
     protected void postGUI2(Form f) {
     }
 
@@ -1157,6 +1177,10 @@ public abstract class StateMachineBase extends UIBuilder {
 
 
     protected void postRideDialog(Form f) {
+    }
+
+
+    protected void postAddUniversity(Form f) {
     }
 
     protected void postShowContainer(Container c) {
@@ -1190,12 +1214,6 @@ public abstract class StateMachineBase extends UIBuilder {
             return;
         }
 
-        if("GUI 1".equals(c.getName())) {
-            postContainerGUI1(c);
-            aboutToShowThisContainer = null;
-            return;
-        }
-
         if("GUI 2".equals(c.getName())) {
             postContainerGUI2(c);
             aboutToShowThisContainer = null;
@@ -1210,6 +1228,12 @@ public abstract class StateMachineBase extends UIBuilder {
 
         if("RideDialog".equals(c.getName())) {
             postContainerRideDialog(c);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
+        if("AddUniversity".equals(c.getName())) {
+            postContainerAddUniversity(c);
             aboutToShowThisContainer = null;
             return;
         }
@@ -1238,10 +1262,6 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
-    protected void postContainerGUI1(Container c) {
-    }
-
-
     protected void postContainerGUI2(Container c) {
     }
 
@@ -1251,6 +1271,10 @@ public abstract class StateMachineBase extends UIBuilder {
 
 
     protected void postContainerRideDialog(Container c) {
+    }
+
+
+    protected void postContainerAddUniversity(Container c) {
     }
 
     protected void onCreateRoot(String rootName) {
@@ -1284,12 +1308,6 @@ public abstract class StateMachineBase extends UIBuilder {
             return;
         }
 
-        if("GUI 1".equals(rootName)) {
-            onCreateGUI1();
-            aboutToShowThisContainer = null;
-            return;
-        }
-
         if("GUI 2".equals(rootName)) {
             onCreateGUI2();
             aboutToShowThisContainer = null;
@@ -1304,6 +1322,12 @@ public abstract class StateMachineBase extends UIBuilder {
 
         if("RideDialog".equals(rootName)) {
             onCreateRideDialog();
+            aboutToShowThisContainer = null;
+            return;
+        }
+
+        if("AddUniversity".equals(rootName)) {
+            onCreateAddUniversity();
             aboutToShowThisContainer = null;
             return;
         }
@@ -1332,10 +1356,6 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
-    protected void onCreateGUI1() {
-    }
-
-
     protected void onCreateGUI2() {
     }
 
@@ -1345,6 +1365,10 @@ public abstract class StateMachineBase extends UIBuilder {
 
 
     protected void onCreateRideDialog() {
+    }
+
+
+    protected void onCreateAddUniversity() {
     }
 
     protected Hashtable getFormState(Form f) {
@@ -1379,12 +1403,6 @@ public abstract class StateMachineBase extends UIBuilder {
             return h;
         }
 
-        if("GUI 1".equals(f.getName())) {
-            getStateGUI1(f, h);
-            aboutToShowThisContainer = null;
-            return h;
-        }
-
         if("GUI 2".equals(f.getName())) {
             getStateGUI2(f, h);
             aboutToShowThisContainer = null;
@@ -1399,6 +1417,12 @@ public abstract class StateMachineBase extends UIBuilder {
 
         if("RideDialog".equals(f.getName())) {
             getStateRideDialog(f, h);
+            aboutToShowThisContainer = null;
+            return h;
+        }
+
+        if("AddUniversity".equals(f.getName())) {
+            getStateAddUniversity(f, h);
             aboutToShowThisContainer = null;
             return h;
         }
@@ -1427,10 +1451,6 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
-    protected void getStateGUI1(Form f, Hashtable h) {
-    }
-
-
     protected void getStateGUI2(Form f, Hashtable h) {
     }
 
@@ -1440,6 +1460,10 @@ public abstract class StateMachineBase extends UIBuilder {
 
 
     protected void getStateRideDialog(Form f, Hashtable h) {
+    }
+
+
+    protected void getStateAddUniversity(Form f, Hashtable h) {
     }
 
     protected void setFormState(Form f, Hashtable state) {
@@ -1474,12 +1498,6 @@ public abstract class StateMachineBase extends UIBuilder {
             return;
         }
 
-        if("GUI 1".equals(f.getName())) {
-            setStateGUI1(f, state);
-            aboutToShowThisContainer = null;
-            return;
-        }
-
         if("GUI 2".equals(f.getName())) {
             setStateGUI2(f, state);
             aboutToShowThisContainer = null;
@@ -1494,6 +1512,12 @@ public abstract class StateMachineBase extends UIBuilder {
 
         if("RideDialog".equals(f.getName())) {
             setStateRideDialog(f, state);
+            aboutToShowThisContainer = null;
+            return;
+        }
+
+        if("AddUniversity".equals(f.getName())) {
+            setStateAddUniversity(f, state);
             aboutToShowThisContainer = null;
             return;
         }
@@ -1522,10 +1546,6 @@ public abstract class StateMachineBase extends UIBuilder {
     }
 
 
-    protected void setStateGUI1(Form f, Hashtable state) {
-    }
-
-
     protected void setStateGUI2(Form f, Hashtable state) {
     }
 
@@ -1535,6 +1555,10 @@ public abstract class StateMachineBase extends UIBuilder {
 
 
     protected void setStateRideDialog(Form f, Hashtable state) {
+    }
+
+
+    protected void setStateAddUniversity(Form f, Hashtable state) {
     }
 
     protected boolean setListModel(List cmp) {
@@ -1595,20 +1619,16 @@ public abstract class StateMachineBase extends UIBuilder {
             }
         }
         if(rootContainerName.equals("MainScreen")) {
-            if("Button".equals(c.getName())) {
-                onMainScreen_ButtonAction(c, event);
+            if("GetRide".equals(c.getName())) {
+                onMainScreen_GetRideAction(c, event);
                 return;
             }
-            if("Button1".equals(c.getName())) {
-                onMainScreen_Button1Action(c, event);
+            if("Drive".equals(c.getName())) {
+                onMainScreen_DriveAction(c, event);
                 return;
             }
         }
         if(rootContainerName.equals("Register")) {
-            if("ProfilePic".equals(c.getName())) {
-                onRegister_ProfilePicAction(c, event);
-                return;
-            }
             if("Name".equals(c.getName())) {
                 onRegister_NameAction(c, event);
                 return;
@@ -1619,6 +1639,10 @@ public abstract class StateMachineBase extends UIBuilder {
             }
             if("Email".equals(c.getName())) {
                 onRegister_EmailAction(c, event);
+                return;
+            }
+            if("AddUniversity".equals(c.getName())) {
+                onRegister_AddUniversityAction(c, event);
                 return;
             }
             if("Password".equals(c.getName())) {
@@ -1638,16 +1662,6 @@ public abstract class StateMachineBase extends UIBuilder {
                 return;
             }
         }
-        if(rootContainerName.equals("GUI 1")) {
-            if("Button1".equals(c.getName())) {
-                onGUI1_Button1Action(c, event);
-                return;
-            }
-            if("Button".equals(c.getName())) {
-                onGUI1_ButtonAction(c, event);
-                return;
-            }
-        }
         if(rootContainerName.equals("GUI 2")) {
             if("List".equals(c.getName())) {
                 onGUI2_ListAction(c, event);
@@ -1661,6 +1675,28 @@ public abstract class StateMachineBase extends UIBuilder {
             }
             if("Button1".equals(c.getName())) {
                 onRideDialog_Button1Action(c, event);
+                return;
+            }
+        }
+        if(rootContainerName.equals("AddUniversity")) {
+            if("Name".equals(c.getName())) {
+                onAddUniversity_NameAction(c, event);
+                return;
+            }
+            if("EmailFormat".equals(c.getName())) {
+                onAddUniversity_EmailFormatAction(c, event);
+                return;
+            }
+            if("Url".equals(c.getName())) {
+                onAddUniversity_UrlAction(c, event);
+                return;
+            }
+            if("Add".equals(c.getName())) {
+                onAddUniversity_AddAction(c, event);
+                return;
+            }
+            if("Register".equals(c.getName())) {
+                onAddUniversity_RegisterAction(c, event);
                 return;
             }
         }
@@ -1690,13 +1726,10 @@ public abstract class StateMachineBase extends UIBuilder {
       protected void onLogin_BtnNoAccountAction(Component c, ActionEvent event) {
       }
 
-      protected void onMainScreen_ButtonAction(Component c, ActionEvent event) {
+      protected void onMainScreen_GetRideAction(Component c, ActionEvent event) {
       }
 
-      protected void onMainScreen_Button1Action(Component c, ActionEvent event) {
-      }
-
-      protected void onRegister_ProfilePicAction(Component c, ActionEvent event) {
+      protected void onMainScreen_DriveAction(Component c, ActionEvent event) {
       }
 
       protected void onRegister_NameAction(Component c, ActionEvent event) {
@@ -1706,6 +1739,9 @@ public abstract class StateMachineBase extends UIBuilder {
       }
 
       protected void onRegister_EmailAction(Component c, ActionEvent event) {
+      }
+
+      protected void onRegister_AddUniversityAction(Component c, ActionEvent event) {
       }
 
       protected void onRegister_PasswordAction(Component c, ActionEvent event) {
@@ -1720,12 +1756,6 @@ public abstract class StateMachineBase extends UIBuilder {
       protected void onRegister_BtnHaveAccountAction(Component c, ActionEvent event) {
       }
 
-      protected void onGUI1_Button1Action(Component c, ActionEvent event) {
-      }
-
-      protected void onGUI1_ButtonAction(Component c, ActionEvent event) {
-      }
-
       protected void onGUI2_ListAction(Component c, ActionEvent event) {
       }
 
@@ -1733,6 +1763,21 @@ public abstract class StateMachineBase extends UIBuilder {
       }
 
       protected void onRideDialog_Button1Action(Component c, ActionEvent event) {
+      }
+
+      protected void onAddUniversity_NameAction(Component c, ActionEvent event) {
+      }
+
+      protected void onAddUniversity_EmailFormatAction(Component c, ActionEvent event) {
+      }
+
+      protected void onAddUniversity_UrlAction(Component c, ActionEvent event) {
+      }
+
+      protected void onAddUniversity_AddAction(Component c, ActionEvent event) {
+      }
+
+      protected void onAddUniversity_RegisterAction(Component c, ActionEvent event) {
       }
 
 }

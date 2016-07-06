@@ -7,10 +7,14 @@
 
 package userclasses;
 
-import com.codename1.analytics.AnalyticsService;
+import ca.weblite.codename1.json.JSONArray;
+import ca.weblite.codename1.json.JSONException;
+import ca.weblite.codename1.json.JSONObject;
 import com.codename1.components.ToastBar;
 import com.codename1.io.ConnectionRequest;
+import com.codename1.io.Preferences;
 import com.codename1.location.Location;
+import com.codename1.location.LocationListener;
 import com.codename1.location.LocationManager;
 import com.codename1.maps.Coord;
 import com.codename1.maps.MapComponent;
@@ -34,10 +38,13 @@ import generated.StateMachineBase;
  */
 public class StateMachine extends StateMachineBase {
     private final RequestsHandler requestsHandler = new RequestsHandler();
-    PointLayer distPoint;
-    PointsLayer distLayer;
+    PointLayer distPoint, sourcePoint;
+    PointsLayer distLayer, sourceLayer;
     Long pointerPressed;
     int pointerPressedX, pointerPressedY;
+    boolean EnableGpsFlag = true;
+    Long lastTimeLocationSent = 0l, lastLocationUpdate = 0l;
+    int locationSendThreshold = 10000, locationUpdateThreshold = 500;
 
     public StateMachine(String resFile) {
         super(resFile);
@@ -67,6 +74,33 @@ public class StateMachine extends StateMachineBase {
         if (request.getResponseCode() == 201) {
             ToastBar.showErrorMessage("logged in");
             String msg = new String(request.getResponseData());
+            try {
+                JSONArray jsonArray = new JSONArray(msg);
+                JSONObject accessToken = jsonArray.getJSONObject(0);
+                Preferences.set("token", accessToken.getString("value"));
+                Preferences.set("tokenTimestamp", accessToken.getString("timestamp"));
+                Preferences.set("tokenLastused", accessToken.getString("lastused"));
+                JSONObject member = jsonArray.getJSONObject(1);
+                Preferences.set("id", member.getString("id"));
+                Preferences.set("name", member.getString("name"));
+                Preferences.set("username", member.getString("username"));
+                Preferences.set("studentemail", member.getString("studentemail"));
+                Preferences.set("phonenumber", member.getString("phonenumber"));
+                Preferences.set("birthdate", member.getString("birthdate"));
+                Preferences.set("gender", member.getString("gender"));
+                Preferences.set("collegeid", member.getString("collegeid"));
+                Preferences.set("bloodtype", member.getString("bloodtype"));
+                Preferences.set("emergencynumber", member.getString("emergencynumber"));
+                Preferences.set("balance", member.getString("balance"));
+                Preferences.set("longitude", member.getString("longitude"));
+                Preferences.set("latitude", member.getString("latitude"));
+                Preferences.set("pic", member.getString("pic"));
+                Preferences.set("universityid", member.getString("universityid"));
+                Preferences.set("preferences", member.getString("preferences"));
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
 
             showForm("MainScreen", null);
         } else {
@@ -77,30 +111,63 @@ public class StateMachine extends StateMachineBase {
 
     @Override
     protected void beforeMainScreen(Form f) {
-
+        if (Preferences.get("token", null) == null) {
+            Preferences.clearAll();
+            showForm("Login", null);
+            return;
+        }
 
         Image image = fetchResourceFile().getImage("map-pin-blue-hi.png");
         String name = "You are here!";
-        PointsLayer pointsLayer = new PointsLayer();
-        Coord position;
-        try {
-            Location currentLocation = LocationManager.getLocationManager().getCurrentLocation();
-            position = new Coord(currentLocation.getLatitude(), currentLocation.getLongitude());
-        } catch (Exception e) {
-            e.printStackTrace();
-            AnalyticsService.sendCrashReport(e, e.getMessage(), false);
-            Dialog.show("error", e.getMessage(), "ok", null);
+        sourceLayer = new PointsLayer();
 
-            Location currentLocation = LocationManager.getLocationManager().getLastKnownLocation();
-            position = new Coord(currentLocation.getLatitude(), currentLocation.getLongitude());
-        }
+        Location currentLocation = LocationManager.getLocationManager().getLastKnownLocation();
+        Coord position = new Coord(currentLocation.getLatitude(), currentLocation.getLongitude());
+
         MapComponent mapComponent = new MapComponent(new GoogleMapsProvider("AIzaSyAxlzXskkl3KKdjZUuFrV-j8oFjWOjtTIQ"), position, 5, true);
-        PointLayer pointLayer = new PointLayer(position, name, image);
-        pointLayer.setDisplayName(true);
-        pointsLayer.addPoint(pointLayer);
-        mapComponent.addLayer(pointsLayer);
+        sourcePoint = new PointLayer(position, name, image);
+        sourcePoint.setDisplayName(true);
+        sourceLayer.addPoint(sourcePoint);
+        mapComponent.addLayer(sourceLayer);
         f.addComponent(BorderLayout.CENTER, mapComponent);
 
+
+        LocationManager.getLocationManager().setLocationListener(new LocationListener() {
+            @Override
+            public void locationUpdated(Location location) {
+                if (System.currentTimeMillis() - lastTimeLocationSent >= locationSendThreshold) {
+                    String id = Preferences.get("id", "");
+                    double latitude = location.getLatitude();
+                    double longitude = location.getLongitude();
+                    String token = Preferences.get("token", "");
+
+                    RequestsHandler.updateMemberLocationAsync(id, latitude, longitude, token);
+                    lastTimeLocationSent = System.currentTimeMillis();
+
+                }
+                if (System.currentTimeMillis() - lastLocationUpdate >= locationUpdateThreshold) {
+                    sourceLayer.removePoint(sourcePoint);
+                    sourcePoint = new PointLayer(new Coord(location.getLatitude(), location.getLongitude()), name, image);
+                    sourcePoint.setDisplayName(true);
+                    sourceLayer.addPoint(sourcePoint);
+                    mapComponent.repaint();
+                }
+            }
+
+            @Override
+            public void providerStateChanged(int newState) {
+                if (newState != 0 && EnableGpsFlag) {
+                    Dialog.show("Error", "Please enable GPS!", "ok", null);
+                    findDrive().setEnabled(false);
+                    findGetRide().setEnabled(false);
+                    EnableGpsFlag = false;
+                } else {
+                    findDrive().setEnabled(true);
+                    findGetRide().setEnabled(true);
+                    EnableGpsFlag = true;
+                }
+            }
+        });
 
 //            findMapComponent().addMapListener((source, zoom, center) -> {
 //
@@ -152,7 +219,6 @@ public class StateMachine extends StateMachineBase {
 //                }
 //
 //            });
-
         mapComponent.addPointerPressedListener(evt ->
                 {
                     pointerPressed = System.currentTimeMillis();
@@ -165,29 +231,24 @@ public class StateMachine extends StateMachineBase {
             int y = evt.getY();
 
             final boolean longTap = (System.currentTimeMillis() - pointerPressed >= 200) && Math.abs(x - pointerPressedX) <= 10 && Math.abs(y - pointerPressedY) <= 10;
-            if (longTap) {
+            if (longTap && EnableGpsFlag) {
                 Image image1 = fetchResourceFile().getImage("map-pin-green-hi.png");
                 String name1 = "Your Dist!";
                 Coord coord = mapComponent.getCoordFromPosition(evt.getX(), evt.getY());
-
+                if (distLayer != null && distPoint != null)
+                    distLayer.removePoint(distPoint);
+                else {
+                    distLayer = new PointsLayer();
+                    mapComponent.addLayer(distLayer);
+                }
                 distPoint = new PointLayer(coord, name1, image1);
                 distPoint.setDisplayName(true);
-                distLayer = new PointsLayer();
                 distLayer.addPoint(distPoint);
 
-                while (mapComponent.getLayersConut() > 1)
-                    mapComponent.removeLayer(mapComponent.getLayerAt(1));
 
-                mapComponent.addLayer(distLayer);
             }
         });
 
-
-    }
-
-
-    @Override
-    protected void onGUI1_ButtonAction(Component c, ActionEvent event) {
 
     }
 
@@ -203,33 +264,32 @@ public class StateMachine extends StateMachineBase {
 
         ConnectionRequest request = requestsHandler.registerSync(username, name, password, phone, email);
 
-        if (request.getResponseCode()==201) {
+        if (request.getResponseCode() == 201) {
             ToastBar.showErrorMessage("Registered");
-            String msg = new String(request.getResponseData());
 
-            showForm("MainScreen", null);
+            showForm("Login", null);
         } else {
             String msg = new String(request.getResponseData());
-//            String error="";
-//            try {
-//                JSONObject jsonObject = new JSONObject(msg);
-////               error=  jsonObject.optString("password");
-////                error+="\n"+ jsonObject.optString("studentemail");
-////                error+="\n"+ jsonObject.optString("name");
-////                error+="\n"+ jsonObject.optString("username");
-////                error+="\n"+ jsonObject.optString("password");
-////                error+="\n"+ jsonObject.optString("phonenumber");
+            String error = "";
+            try {
+                JSONObject jsonObject = new JSONObject(msg);
+                error = jsonObject.optString("password");
+                error += jsonObject.optString("studentemail");
+                error += jsonObject.optString("name");
+                error += jsonObject.optString("username");
+                error += jsonObject.optString("password");
+                error += jsonObject.optString("phonenumber");
 //                findName().setUIID((jsonObject.has("name"))?"TextAreaRed":"TextArea");
 //                findEmail().setUIID((jsonObject.has("studentemail"))?"TextAreaRed":"TextArea");
 //                findUsername().setUIID((jsonObject.has("username"))?"TextAreaRed":"TextArea");
 //                findPassword().setUIID((jsonObject.has("password"))?"TextAreaRed":"TextArea");
-//                findPhone().setUIID((jsonObject.has("phonenumber"))?"TextAreaRed":"TextArea");
-//
-//                c.getParent().repaint();
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
-            ToastBar.showErrorMessage("something went wrong!");
+                findPhone().setUIID("TextAreaRed");
+
+                c.getParent().repaint();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            ToastBar.showErrorMessage("something went wrong! " + error);
         }
     }
 
@@ -238,17 +298,67 @@ public class StateMachine extends StateMachineBase {
         Validator v = new Validator();
         v.addConstraint(findName(), new RegexConstraint("[aA-zZ ]{5,}", "Must be valid name")).
                 addConstraint(findEmail(), RegexConstraint.validEmail("Email should be valid")).
-                addConstraint( findUsername(), new RegexConstraint("[A-Za-z0-9_]+", "username should be valid")).
+                addConstraint(findUsername(), new RegexConstraint("[A-Za-z0-9_]+", "username should be valid")).
                 addConstraint(findPhone(), new RegexConstraint("[0-9]{10,}", "Must be valid phone number")).
-                addConstraint(findPassword(),new RegexConstraint(".{6,}","Password should be complex"));
+                addConstraint(findPassword(), new RegexConstraint(".{6,}", "Password should be complex"));
         v.addSubmitButtons(findRegister());
     }
 
     @Override
     protected void beforeLogin(Form f) {
+        if (Preferences.get("token", null) != null) {
+            showForm("MainScreen", null);
+            return;
+        }
+
         Validator v = new Validator();
-        v.addConstraint( findUsername(), new RegexConstraint("[A-Za-z0-9_]+", "username should be valid")).
-                addConstraint(findPassword(),new RegexConstraint(".{6,}","Password should be complex"));
+        v.addConstraint(findUsername(), new RegexConstraint("[A-Za-z0-9_]+", "username should be valid")).
+                addConstraint(findPassword(), new RegexConstraint(".{6,}", "Password should be complex"));
         v.addSubmitButtons(findBtnLogin());
+    }
+
+    @Override
+    protected boolean onMainScreenLogout() {
+        Preferences.clearAll();
+        showForm("Login", null);
+        return true;
+    }
+
+    @Override
+    protected void postSplashScreen(Form f) {
+
+        if (Preferences.get("token", null) != null)
+            showForm("MainScreen", null);
+        else
+            showForm("Login", null);
+    }
+
+
+    @Override
+    protected void onAddUniversity_AddAction(Component c, ActionEvent event) {
+
+        String name = findName().getText();
+        String emailFormat = findEmailFormat().getText();
+        String url = findUrl().getText();
+
+        ConnectionRequest request = requestsHandler.addUniversitySync(name, emailFormat, url);
+
+        if (request.getResponseCode() == 201) {
+            ToastBar.showErrorMessage("Success");
+
+            showForm("Register", null);
+        } else {
+            ToastBar.showErrorMessage("something went wrong! ");
+
+        }
+    }
+
+    @Override
+    protected void beforeAddUniversity(Form f) {
+        Validator v = new Validator();
+        v.addConstraint(findName(), new RegexConstraint("[aA-zZ ]{2,}", "Must be valid name")).
+                addConstraint(findEmailFormat(), new RegexConstraint("([A-Za-z0-9_\\-\\.])+\\.[Ee][Dd][Uu]", "Email Format should be valid")).
+                addConstraint(findUrl(), new RegexConstraint("([A-Za-z0-9_\\-\\.])+\\.[Ee][Dd][Uu]", "Url should be valid"));
+        v.addSubmitButtons(findRegister());
     }
 }

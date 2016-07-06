@@ -5,7 +5,6 @@ import com.codename1.analytics.AnalyticsService;
 import com.codename1.ui.Dialog;
 import com.codename1.ui.Display;
 import com.codename1.ui.Form;
-import com.codename1.ui.Toolbar;
 import userclasses.StateMachine;
 
 /**
@@ -18,7 +17,7 @@ public class Gara {
 
     public void init(Object context) {
         // Enable Toolbar on all Forms by default
-        Toolbar.setGlobalToolbar(true);
+//        Toolbar.setGlobalToolbar(true);
 
 
         // Pro only feature, uncomment if you have a pro subscription

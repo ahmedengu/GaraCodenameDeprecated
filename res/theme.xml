@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <resource majorVersion="1" minorVersion="7" useXmlUI="false">
+    <ui name="AddUniversity" />
     <image name="back-command.png" type="multi"  />
     <theme name="BlueTheme">
         <val key="@PopupDialogArrowBool" value="false" />
@@ -24,7 +25,7 @@
         <val key="@dlgInvisibleButtons" value="1a1a1a" />
         <val key="@formTransitionIn" value="empty" />
         <val key="@formTransitionOut" value="slide" />
-        <val key="@hideBackCommandBool" value="false" />
+        <val key="@hideBackCommandBool" value="true" />
         <val key="@includeNativeBool" value="true" />
         <val key="@menuTransitionIn" value="bubble" />
         <val key="@menuTransitionOut" value="fade" />
@@ -36,7 +37,7 @@
         <val key="@radioSelectedImage" value="chboxv1.png" />
         <val key="@radioUnselectedFocusImage" value="chbox1.png" />
         <val key="@radioUnselectedImage" value="chbox1.png" />
-        <val key="@showBackCommandOnTitleBool" value="true" />
+        <val key="@showBackCommandOnTitleBool" value="false" />
         <val key="@showMenuBelowTitleBool" value="false" />
         <val key="@switchMaskImage" value="switch_mask.png" />
         <val key="@switchOffImage" value="switch_off.png" />
@@ -806,7 +807,6 @@
     <image name="Dialog.borderTop_1.png" type="multi"  />
     <image name="Dialog.borderTopL_1.png" type="multi"  />
     <image name="Dialog.borderTopR_1.png" type="multi"  />
-    <ui name="GUI 1" />
     <ui name="GUI 2" />
     <ui name="GUI 3" />
     <l10n name="L">
@@ -815,8 +815,8 @@
             <entry key="Button" value="Button" />
             <entry key="@rtl" value="true" />
             <entry key="ok" value="" />
-            <entry key="edit" value="" />
             <entry key="cancel" value="" />
+            <entry key="edit" value="" />
             <entry key="menu" value="" />
         </lang>
         <lang name="en">
@@ -824,8 +824,8 @@
             <entry key="Button" value="Button" />
             <entry key="@rtl" value="" />
             <entry key="ok" value="OK" />
-            <entry key="edit" value="Edit" />
             <entry key="cancel" value="Cancel" />
+            <entry key="edit" value="Edit" />
             <entry key="menu" value="Menu" />
         </lang>
     </l10n>

@@ -6,13 +6,13 @@
   </component>
   <component type="Container" name="Container" cloudDestinationProperty="Container" layout="BoxLayout" boxLayoutAxis="Y" >
     <layoutConstraint value="Center" />
-    <component type="TextArea" name="Username" cloudBoundProperty="text" cloudDestinationProperty="TextArea" text="" growByContent="false" hint="Username" >
+    <component type="TextArea" name="Username" cloudBoundProperty="text" cloudDestinationProperty="TextArea" uiid="GroupElementFirst" text="" growByContent="false" hint="Username" >
     </component>
-    <component type="TextArea" name="Password" cloudBoundProperty="text" cloudDestinationProperty="TextArea1" text="" growByContent="false" constraint="65536" hint="Password" >
+    <component type="TextArea" name="Password" cloudBoundProperty="text" cloudDestinationProperty="TextArea1" uiid="GroupElement" text="" growByContent="false" constraint="65536" hint="Password" >
     </component>
-    <component type="Button" name="BtnLogin" cloudDestinationProperty="Button" commandName="Login" commandId="5" commandAction="" commandBack="false" text="Login" >
+    <component type="Button" name="BtnLogin" cloudDestinationProperty="Button" commandName="Login" commandId="5" commandAction="" commandBack="false" uiid="GroupElementLast" text="Login" >
     </component>
-    <component type="Button" name="BtnNoAccount" cloudDestinationProperty="BtnNoAccount" commandName="Don't have an account?, Register Now!" commandId="4" commandAction="Register" commandBack="false" uiid="labelCenter" text="Don't have an account?, Register Now!" >
+    <component type="Button" name="BtnNoAccount" cloudDestinationProperty="BtnNoAccount" commandName="Register Now!" commandId="4" commandAction="Register" commandBack="false" uiid="GroupElementOnly" text="Register Now!" >
     </component>
   </component>
 </component>
