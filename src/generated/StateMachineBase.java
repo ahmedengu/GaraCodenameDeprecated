@@ -280,6 +280,18 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
+    public com.codename1.ui.TextArea findName(Component root) {
+        return (com.codename1.ui.TextArea)findByName("Name", root);
+    }
+
+    public com.codename1.ui.TextArea findName() {
+        com.codename1.ui.TextArea cmp = (com.codename1.ui.TextArea)findByName("Name", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.ui.TextArea)findByName("Name", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
     public com.codename1.ui.Label findLabel9(Component root) {
         return (com.codename1.ui.Label)findByName("Label9", root);
     }
@@ -340,18 +352,6 @@ public abstract class StateMachineBase extends UIBuilder {
         return cmp;
     }
 
-    public com.codename1.components.InfiniteProgress findInfiniteProgress(Component root) {
-        return (com.codename1.components.InfiniteProgress)findByName("InfiniteProgress", root);
-    }
-
-    public com.codename1.components.InfiniteProgress findInfiniteProgress() {
-        com.codename1.components.InfiniteProgress cmp = (com.codename1.components.InfiniteProgress)findByName("InfiniteProgress", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.components.InfiniteProgress)findByName("InfiniteProgress", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
     public com.codename1.ui.Button findButton(Component root) {
         return (com.codename1.ui.Button)findByName("Button", root);
     }
@@ -360,6 +360,18 @@ public abstract class StateMachineBase extends UIBuilder {
         com.codename1.ui.Button cmp = (com.codename1.ui.Button)findByName("Button", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
             cmp = (com.codename1.ui.Button)findByName("Button", aboutToShowThisContainer);
+        }
+        return cmp;
+    }
+
+    public com.codename1.components.InfiniteProgress findInfiniteProgress(Component root) {
+        return (com.codename1.components.InfiniteProgress)findByName("InfiniteProgress", root);
+    }
+
+    public com.codename1.components.InfiniteProgress findInfiniteProgress() {
+        com.codename1.components.InfiniteProgress cmp = (com.codename1.components.InfiniteProgress)findByName("InfiniteProgress", Display.getInstance().getCurrent());
+        if(cmp == null && aboutToShowThisContainer != null) {
+            cmp = (com.codename1.components.InfiniteProgress)findByName("InfiniteProgress", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -516,18 +528,6 @@ public abstract class StateMachineBase extends UIBuilder {
         com.codename1.ui.Button cmp = (com.codename1.ui.Button)findByName("Logo", Display.getInstance().getCurrent());
         if(cmp == null && aboutToShowThisContainer != null) {
             cmp = (com.codename1.ui.Button)findByName("Logo", aboutToShowThisContainer);
-        }
-        return cmp;
-    }
-
-    public com.codename1.ui.TextArea findCPassword(Component root) {
-        return (com.codename1.ui.TextArea)findByName("CPassword", root);
-    }
-
-    public com.codename1.ui.TextArea findCPassword() {
-        com.codename1.ui.TextArea cmp = (com.codename1.ui.TextArea)findByName("CPassword", Display.getInstance().getCurrent());
-        if(cmp == null && aboutToShowThisContainer != null) {
-            cmp = (com.codename1.ui.TextArea)findByName("CPassword", aboutToShowThisContainer);
         }
         return cmp;
     }
@@ -1594,9 +1594,23 @@ public abstract class StateMachineBase extends UIBuilder {
                 return;
             }
         }
+        if(rootContainerName.equals("MainScreen")) {
+            if("Button".equals(c.getName())) {
+                onMainScreen_ButtonAction(c, event);
+                return;
+            }
+            if("Button1".equals(c.getName())) {
+                onMainScreen_Button1Action(c, event);
+                return;
+            }
+        }
         if(rootContainerName.equals("Register")) {
             if("ProfilePic".equals(c.getName())) {
                 onRegister_ProfilePicAction(c, event);
+                return;
+            }
+            if("Name".equals(c.getName())) {
+                onRegister_NameAction(c, event);
                 return;
             }
             if("Username".equals(c.getName())) {
@@ -1609,10 +1623,6 @@ public abstract class StateMachineBase extends UIBuilder {
             }
             if("Password".equals(c.getName())) {
                 onRegister_PasswordAction(c, event);
-                return;
-            }
-            if("CPassword".equals(c.getName())) {
-                onRegister_CPasswordAction(c, event);
                 return;
             }
             if("Phone".equals(c.getName())) {
@@ -1680,7 +1690,16 @@ public abstract class StateMachineBase extends UIBuilder {
       protected void onLogin_BtnNoAccountAction(Component c, ActionEvent event) {
       }
 
+      protected void onMainScreen_ButtonAction(Component c, ActionEvent event) {
+      }
+
+      protected void onMainScreen_Button1Action(Component c, ActionEvent event) {
+      }
+
       protected void onRegister_ProfilePicAction(Component c, ActionEvent event) {
+      }
+
+      protected void onRegister_NameAction(Component c, ActionEvent event) {
       }
 
       protected void onRegister_UsernameAction(Component c, ActionEvent event) {
@@ -1690,9 +1709,6 @@ public abstract class StateMachineBase extends UIBuilder {
       }
 
       protected void onRegister_PasswordAction(Component c, ActionEvent event) {
-      }
-
-      protected void onRegister_CPasswordAction(Component c, ActionEvent event) {
       }
 
       protected void onRegister_PhoneAction(Component c, ActionEvent event) {

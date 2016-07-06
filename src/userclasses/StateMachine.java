@@ -9,6 +9,8 @@ package userclasses;
 
 import com.codename1.analytics.AnalyticsService;
 import com.codename1.components.ToastBar;
+import com.codename1.io.ConnectionRequest;
+import com.codename1.io.NetworkManager;
 import com.codename1.location.Location;
 import com.codename1.location.LocationManager;
 import com.codename1.maps.Coord;
@@ -23,12 +25,17 @@ import com.codename1.ui.Image;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.util.Resources;
+import com.codename1.ui.validation.RegexConstraint;
+import com.codename1.ui.validation.Validator;
+import com.g_ara.gara.RESTLinks;
+import com.g_ara.gara.RequestsHandler;
 import generated.StateMachineBase;
 
 /**
  * @author Your name here
  */
 public class StateMachine extends StateMachineBase {
+    private final RequestsHandler requestsHandler = new RequestsHandler();
     PointLayer distPoint;
     PointsLayer distLayer;
     Long pointerPressed;
@@ -55,9 +62,20 @@ public class StateMachine extends StateMachineBase {
 
     @Override
     protected void onLogin_BtnLoginAction(Component c, ActionEvent event) {
+        String username = findUsername().getText();
+        String password = findPassword().getText();
 
+        ConnectionRequest request = requestsHandler.loginAsync(username, password);
+        if (request.getResponseCode() == 201) {
+            ToastBar.showErrorMessage("logged in");
+            String msg = new String(request.getResponseData());
 
+            showForm("MainScreen", null);
+        } else {
+            ToastBar.showErrorMessage("incorrect username or password");
+        }
     }
+
 
     @Override
     protected void beforeMainScreen(Form f) {
@@ -163,7 +181,6 @@ public class StateMachine extends StateMachineBase {
                     mapComponent.removeLayer(mapComponent.getLayerAt(1));
 
                 mapComponent.addLayer(distLayer);
-                ToastBar.showErrorMessage("analytics enabled: " + AnalyticsService.isEnabled());
             }
         });
 
@@ -176,4 +193,72 @@ public class StateMachine extends StateMachineBase {
 
     }
 
+
+    @Override
+    protected void onRegister_RegisterAction(Component c, ActionEvent event) {
+
+        String username = findUsername().getText();
+        String name = findName().getText();
+        String password = findPassword().getText();
+        String phone = findPhone().getText();
+        String email = findEmail().getText();
+
+        ConnectionRequest request = new ConnectionRequest(RESTLinks.REGISTER, true);
+        request.addArgument("username", username);
+        request.addArgument("password", password);
+        request.addArgument("name", name);
+        request.addArgument("phonenumber", phone);
+        request.addArgument("studentemail", email);
+        request.setFailSilently(true);
+        request.setReadResponseForErrors(true);
+        NetworkManager.getInstance().addToQueueAndWait(request);
+
+        if (request.getResponseCode()==201) {
+            ToastBar.showErrorMessage("Registered");
+            String msg = new String(request.getResponseData());
+
+            showForm("MainScreen", null);
+        } else {
+            String msg = new String(request.getResponseData());
+//            String error="";
+//            try {
+//                JSONObject jsonObject = new JSONObject(msg);
+////               error=  jsonObject.optString("password");
+////                error+="\n"+ jsonObject.optString("studentemail");
+////                error+="\n"+ jsonObject.optString("name");
+////                error+="\n"+ jsonObject.optString("username");
+////                error+="\n"+ jsonObject.optString("password");
+////                error+="\n"+ jsonObject.optString("phonenumber");
+//                findName().setUIID((jsonObject.has("name"))?"TextAreaRed":"TextArea");
+//                findEmail().setUIID((jsonObject.has("studentemail"))?"TextAreaRed":"TextArea");
+//                findUsername().setUIID((jsonObject.has("username"))?"TextAreaRed":"TextArea");
+//                findPassword().setUIID((jsonObject.has("password"))?"TextAreaRed":"TextArea");
+//                findPhone().setUIID((jsonObject.has("phonenumber"))?"TextAreaRed":"TextArea");
+//
+//                c.getParent().repaint();
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+            ToastBar.showErrorMessage("something went wrong!");
+        }
+    }
+
+    @Override
+    protected void beforeRegister(Form f) {
+        Validator v = new Validator();
+        v.addConstraint(findName(), new RegexConstraint("[aA-zZ ]{5,}", "Must be valid name")).
+                addConstraint(findEmail(), RegexConstraint.validEmail("Email should be valid")).
+                addConstraint( findUsername(), new RegexConstraint("[A-Za-z0-9_]+", "username should be valid")).
+                addConstraint(findPhone(), new RegexConstraint("[0-9]{10,}", "Must be valid phone number")).
+                addConstraint(findPassword(),new RegexConstraint(".{6,}","Password should be complex"));
+        v.addSubmitButtons(findRegister());
+    }
+
+    @Override
+    protected void beforeLogin(Form f) {
+        Validator v = new Validator();
+        v.addConstraint( findUsername(), new RegexConstraint("[A-Za-z0-9_]+", "username should be valid")).
+                addConstraint(findPassword(),new RegexConstraint(".{6,}","Password should be complex"));
+        v.addSubmitButtons(findBtnLogin());
+    }
 }

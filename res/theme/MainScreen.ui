@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <component type="Form" name="MainScreen" cloudDestinationProperty="MainScreen" scrollableY="false" layout="BorderLayout" borderLayoutAbsoluteCenter="false" title="Home" >
+  <component type="Container" name="Container" cloudDestinationProperty="Container" layout="BoxLayout" boxLayoutAxis="Y" >
+    <layoutConstraint value="South" />
+    <component type="Button" name="Button" cloudDestinationProperty="Button" text="Get a ride " >
+    </component>
+    <component type="Button" name="Button1" cloudDestinationProperty="Button1" text="Drive" >
+    </component>
+  </component>
 <command name="Logout" id="12" action="" backCommand="false" /><command name="Chat" id="11" action="" backCommand="false" /><command name="Settings" id="10" action="Settings" backCommand="false" /><command name="Profile" id="9" action="" backCommand="false" /><command name="Driver area" id="8" action="" backCommand="false" /><command name="Become a driver" id="7" action="" backCommand="false" /><command name="Home" id="6" action="" backCommand="false" /></component>

@@ -3,17 +3,17 @@
 <component type="Form" name="Register" cloudDestinationProperty="Register" layout="BoxLayout" boxLayoutAxis="Y" title="Register" >
   <component type="Button" name="ProfilePic" cloudDestinationProperty="profilePic" uiid="profilePic" text="" icon="profile.png" >
   </component>
-  <component type="TextArea" name="Username" cloudBoundProperty="text" cloudDestinationProperty="username" text="" hint="Username" >
+  <component type="TextArea" name="Name" cloudBoundProperty="text" cloudDestinationProperty="Name" text="" growByContent="false" hint="Name" >
   </component>
-  <component type="TextArea" name="Email" cloudBoundProperty="text" cloudDestinationProperty="email" text="" hint="Email" >
+  <component type="TextArea" name="Username" cloudBoundProperty="text" cloudDestinationProperty="username" text="" growByContent="false" hint="Username" >
   </component>
-  <component type="TextArea" name="Password" cloudBoundProperty="text" cloudDestinationProperty="password" text="" hint="Password" >
+  <component type="TextArea" name="Email" cloudBoundProperty="text" cloudDestinationProperty="email" text="" growByContent="false" constraint="1" hint="Student Email" >
   </component>
-  <component type="TextArea" name="CPassword" cloudBoundProperty="text" cloudDestinationProperty="cpassword" text="" hint="Confirm Password" >
+  <component type="TextArea" name="Password" cloudBoundProperty="text" cloudDestinationProperty="password" text="" growByContent="false" constraint="65536" hint="Password" >
   </component>
-  <component type="TextArea" name="Phone" cloudBoundProperty="text" cloudDestinationProperty="phone" text="" hint="Phone" >
+  <component type="TextArea" name="Phone" cloudBoundProperty="text" cloudDestinationProperty="phone" text="" growByContent="false" constraint="3" hint="Phone" >
   </component>
-  <component type="Button" name="Register" cloudDestinationProperty="Button" commandName="Register" commandId="1" commandAction="MainScreen" commandBack="false" text="Register" >
+  <component type="Button" name="Register" cloudDestinationProperty="Button" commandName="Register" commandId="1" commandAction="" commandBack="false" text="Register" >
   </component>
   <component type="Button" name="BtnHaveAccount" cloudDestinationProperty="BtnHaveAccount" commandName="Already a member?, Login!" commandId="2" commandAction="Login" commandBack="false" uiid="labelCenter" text="Already a member?, Login!" >
   </component>
